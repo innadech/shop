@@ -364,6 +364,18 @@ const model = {
         
   },
   
+  showPage(page,productsPerPage) {
+    const startIndex = page * productsPerPage;
+    const endIndex = startIndex + productsPerPage;
+  },
+  createPageButtons() {
+    const totalPages = Math.ceil(products.length / productsPerPage);
+    // for (let i = 0; i < totalPages; i++) {
+
+  },
+  
+  
+  
  
 }
 console.log(model.products)

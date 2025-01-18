@@ -29,3 +29,9 @@ function renderSpanFilterPriceTo(price){
     elDivContainer.appendChild(elProduct)
   }
 }
+
+function renderContainerPagination(number){
+  const elPagination = document.querySelector('.pagination')
+  const elGeneratePage = generatePage(number)
+  elPagination.appendChild(elGeneratePage)
+}

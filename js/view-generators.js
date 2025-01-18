@@ -89,8 +89,12 @@ function generateProduct(product) {
   elDivFavorite.appendChild(elDivFavoriteButton)
   elDivRow.appendChild(elDivCompare)
   elDivCompare.appendChild(elDivCompareButton)
-  
-  
-  
   return  elDivWrapProduct
+}
+
+function generatePage(number){
+  const paginationContainer = document.createElement('a')
+  paginationContainer.classList.add('page')
+  paginationContainer.textContent = number
+  return paginationContainer
 }
