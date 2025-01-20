@@ -210,19 +210,24 @@ const model = {
   ],
 
   // sortingType: '',
-  sortingType: 'byPriceASC',
+  // sortingType: 'byPriceASC',
   query: '',
   findedProducts: [],
+  // valueSelect: '',
+  valueSelect :'10',
   
   // sortingType: 'byPriceDESC',
-  // sortingType: 'byNameASC',
+  sortingType: 'byNameASC',
   // sortingType: 'byNameDESC',
 
   setSortingType(sortingType) {
     this.sortingType = sortingType
   },
+  setValueSelect(valueSelect) {
+    this.valueSelect = valueSelect
+  },
 
-  sortedProducts() {
+  sortedProductsByPrice() {
     function helperByPrice(objA, objB){
       return objA.price - objB.price
     }
@@ -236,6 +241,39 @@ const model = {
     }
 
     return []
+  },
+  sortedProductsByName() {
+    function helper(objA,objB){
+      if (objA.caption < objB.caption ) {
+        return -1
+      }
+    }
+
+    if (this.sortingType === 'byNameASC') {
+      return this.findedProducts.toSorted(helper)
+    }
+
+    if (this.sortingType === 'byNameDESC') {
+      return this.findedProducts.toSorted(helper).toReversed()
+    }
+
+    return []
+  },
+
+  getSlice() {
+    if (this.valueSelect === '10'){
+      return this.findedProducts.slice(0, 2)
+    }
+    if (this.valueSelect === '20'){
+      return this.findedProducts.slice(2, 6)
+    }
+    if (this.valueSelect === '30'){
+      return this.findedProducts.slice(19, 29)
+    }
+    if (this.valueSelect === '40'){
+      return this.findedProducts.slice(29, 40)
+    } 
+
   },
 
 
@@ -255,20 +293,7 @@ const model = {
     this.findedProducts = this.products.filter(helper.bind(this))
   },
 
-  // getSortedFromAToZ() {
-  //   function helper(objA,objB){
-  //     if (objA.caption < objB.caption ) {
-  //       return -1
-  //     }
-  //   }
-  //   return this.products.toSorted(helper)
-  // },
-
-  // getSortedFromZToA() {
-  //   const sorted = this.getSortedFromAToZ()
-  //   return sorted.toReversed()
-  // },
-
+  
   getProductById(id) {
     function helper(product) {
       return product.id === id
@@ -307,7 +332,7 @@ const model = {
       findedProduct.isCart = true
     }
   },
-  outToCartById(id) {
+  removeFromCartById(id) {
     const findedProduct = this.getProductById(id)
     if (findedProduct) {
       findedProduct.isCart = false
@@ -349,24 +374,22 @@ const model = {
   },
  
 
-  getSlice10() {
-    return this.products.slice(0, 2)
-  },
-  getSlice20() {
-    return this.products.slice(2, 6)
-  },
-  getSlice30() {
-    return this.products.slice(19, 29)
-  },
-  getSlice40() {
-    return this.products.slice(29, 39)
-  },
+  // getSlice10() {
+  //   return this.products.slice(0, 2)
+  // },
+  // getSlice20() {
+  //   return this.products.slice(2, 6)
+  // },
+  // getSlice30() {
+  //   return this.products.slice(19, 29)
+  // },
+  // getSlice40() {
+  //   return this.products.slice(29, 39)
+  // },
 
+  
 
-
-
-
-  getfilterPrice(priceFrom,priceTo){
+  getFilterPrice(priceFrom,priceTo){
     function helper(product){
       return (
         product.price < priceFrom ||
@@ -376,32 +399,32 @@ const model = {
     return this.products.filter(helper)
   },
 
-  getslice10AndSort(){
-    const findedProductSlice = this.getSlice10()
-    function helper(objA,objB){
-      return objA.price - objB.price
-    }
-    return findedProductSlice.toSorted(helper)
+  // getSlice10AndSort(){
+  //   const findedProductSlice = this.getSlice10()
+  //   function helper(objA,objB){
+  //     return objA.price - objB.price
+  //   }
+  //   return findedProductSlice.toSorted(helper)
         
-  },
-  getslice20AndSort(){
-    const findedProductSlice = this.getSlice20()
-    function helper(objA,objB){
-      return objA.price - objB.price
-    }
-    return findedProductSlice.toSorted(helper)
+  // },
+  // getslice20AndSort(){
+  //   const findedProductSlice = this.getSlice20()
+  //   function helper(objA,objB){
+  //     return objA.price - objB.price
+  //   }
+  //   return findedProductSlice.toSorted(helper)
         
-  },
+  // },
   
-  showPage(page,productsPerPage) {
-    const startIndex = page * productsPerPage;
-    const endIndex = startIndex + productsPerPage;
-  },
-  createPageButtons() {
-    const totalPages = Math.ceil(products.length / productsPerPage);
-    // for (let i = 0; i < totalPages; i++) {
+  // showPage(page,productsPerPage) {
+  //   const startIndex = page * productsPerPage;
+  //   const endIndex = startIndex + productsPerPage;
+  // },
+  // createPageButtons( productsPerPage) {
+  //   const totalPages = Math.ceil(products.length / productsPerPage);
+  //   // for (let i = 0; i < totalPages; i++) {
 
-  },
+  // },
   
   
   
@@ -416,7 +439,7 @@ const model = {
 // console.log('Q'.toLowerCase().includes('q'));
 // console.log('q'.includes('Q'.toLowerCase()));
 
-let r
+let r 
 
 //.....
 
@@ -425,21 +448,29 @@ let r
 // r = model.findedProducts()
 // console.log(r.length)
 
-// model.setQuery('Офисный ПК solaris-A')
-// r = model.findedProducts()
+// model.setQuery('ГЕЙ')
+// r = model.findedProducts
 // console.log(r.length)
 
 
-model.setQuery('о')
+model.setQuery('')
 model.getFindedProducts()
+r = model.findedProducts
 console.log(model.findedProducts.length)
 
 
 // товары отсортированные
 
-model.setSortingType('byPriceDESC')
-r = model.sortedProducts()
-console.log(r.map(q => q.price));
+// model.setSortingType('byPriceASC')
+// r = model.sortedProductsByPrice()
+// console.log(r.map(q => q.price));
+model.setValueSelect('10')
+r = model.getSlice()
+console.log(r.length);
+model.setSortingType('byNameASC')
+model.sortedProductsByName()
+console.log(r.map(q => q.caption));
+
 
 
 
