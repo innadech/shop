@@ -29,7 +29,6 @@ const model = {
         '20211101203247640.jpg',
         '20161007113734330.jpg',
       ],
-      
     },
     {
       id: 14,
@@ -58,7 +57,6 @@ const model = {
         '20161007113734330.jpg',
         '20190628013756505.jpg',
       ],
-      
     },
     {
       id: 77,
@@ -211,13 +209,14 @@ const model = {
 
   // sortingType: '',
   // sortingType: 'byPriceASC',
-  query: '',
   findedProducts: [],
+
   // valueSelect: '',
-  valueSelect :'10',
-  
-  // sortingType: 'byPriceDESC',
+  query: '',
+  valueSelect: '10',
   sortingType: 'byNameASC',
+
+  // sortingType: 'byPriceDESC',
   // sortingType: 'byNameDESC',
 
   setSortingType(sortingType) {
@@ -228,7 +227,7 @@ const model = {
   },
 
   sortedProductsByPrice() {
-    function helperByPrice(objA, objB){
+    function helperByPrice(objA, objB) {
       return objA.price - objB.price
     }
 
@@ -243,8 +242,8 @@ const model = {
     return []
   },
   sortedProductsByName() {
-    function helper(objA,objB){
-      if (objA.caption < objB.caption ) {
+    function helper(objA, objB) {
+      if (objA.caption < objB.caption) {
         return -1
       }
     }
@@ -259,24 +258,6 @@ const model = {
 
     return []
   },
-
-  // getSlice() {
-  //   if (this.valueSelect === '10'){
-  //     return this.findedProducts.slice(0, 2)
-  //   }
-  //   if (this.valueSelect === '20'){
-  //     return this.findedProducts.slice(2, 6)
-  //   }
-  //   if (this.valueSelect === '30'){
-  //     return this.findedProducts.slice(19, 29)
-  //   }
-  //   if (this.valueSelect === '40'){
-  //     return this.findedProducts.slice(29, 40)
-  //   } 
-
-  // },
-
-
 
   setQuery(query) {
     this.query = query
@@ -293,7 +274,6 @@ const model = {
     this.findedProducts = this.products.filter(helper.bind(this))
   },
 
-  
   getProductById(id) {
     function helper(product) {
       return product.id === id
@@ -373,9 +353,10 @@ const model = {
     return this.getComparisons().length
   },
 
-  
   getRangePrice(from, to) {
-    return this.findedProducts.filter(product => from < product.price && product.price < to)
+    return this.findedProducts.filter(
+      product => from < product.price && product.price < to
+    )
   },
 
   changePageNumbers(products, itemsOnPage, currentPage) {
@@ -383,9 +364,7 @@ const model = {
     let endIndex = startIndex + itemsOnPage
     return products.slice(startIndex, endIndex)
   },
- 
 }
-
 
 // товары по поисковому запросу
 // r = model.findedProducts()
@@ -398,9 +377,9 @@ let r
 model.setQuery('')
 model.getFindedProducts()
 r = model.findedProducts
-console.log(model.getRangePrice(200,500))
+console.log(model.getRangePrice(200, 500))
 console.log(model.findedProducts.length)
-console.log (model.changePageNumbers(r,3,0))
+console.log(model.changePageNumbers(r, 3, 0))
 
 // товары отсортированные
 
@@ -409,14 +388,10 @@ console.log (model.changePageNumbers(r,3,0))
 // console.log(r.map(q => q.price));
 model.setValueSelect('10')
 r = model.getSlice()
-console.log(r.length);
+console.log(r.length)
 model.setSortingType('byNameASC')
 model.sortedProductsByName()
-console.log(r.map(q => q.caption));
-
-
-
-
+console.log(r.map(q => q.caption))
 
 // console.log(model.products)
 // console.log (model.getslice20AndSort())
@@ -438,7 +413,6 @@ console.log(r.map(q => q.caption));
 // console.log(model.getCarts())
 // model.markAsСomparisonById(77)
 // console.log(model.getСomparisons())
-
 
 // let numbers = [55, 77, 33, 88, 22, 11, 99, 66, 44]
 
@@ -462,22 +436,21 @@ console.log(r.map(q => q.caption));
 
 // sortedNumbersDesc
 // getFilterPriceFrom(price) {
-  //   function helper(product) {
-  //     return product.price >= price
-  //   }
-  //   const findedProduct = this.products.find(helper)
-  //   return findedProduct
-  // },
-  // getFilterPriceTo(price) {
-  //   function helper(product) {
-  //     return product.price <= price
-  //   }
-  //   const findedProduct = this.products.find(helper)
-  //   return findedProduct
-  // },
+//   function helper(product) {
+//     return product.price >= price
+//   }
+//   const findedProduct = this.products.find(helper)
+//   return findedProduct
+// },
+// getFilterPriceTo(price) {
+//   function helper(product) {
+//     return product.price <= price
+//   }
+//   const findedProduct = this.products.find(helper)
+//   return findedProduct
+// },
 
-
-  // console.log('Q'.includes('Q'));
+// console.log('Q'.includes('Q'));
 
 // console.log('Q'.includes('q'));
 // console.log('q'.includes('Q'));
