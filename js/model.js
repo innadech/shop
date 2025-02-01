@@ -260,21 +260,21 @@ const model = {
     return []
   },
 
-  getSlice() {
-    if (this.valueSelect === '10'){
-      return this.findedProducts.slice(0, 2)
-    }
-    if (this.valueSelect === '20'){
-      return this.findedProducts.slice(2, 6)
-    }
-    if (this.valueSelect === '30'){
-      return this.findedProducts.slice(19, 29)
-    }
-    if (this.valueSelect === '40'){
-      return this.findedProducts.slice(29, 40)
-    } 
+  // getSlice() {
+  //   if (this.valueSelect === '10'){
+  //     return this.findedProducts.slice(0, 2)
+  //   }
+  //   if (this.valueSelect === '20'){
+  //     return this.findedProducts.slice(2, 6)
+  //   }
+  //   if (this.valueSelect === '30'){
+  //     return this.findedProducts.slice(19, 29)
+  //   }
+  //   if (this.valueSelect === '40'){
+  //     return this.findedProducts.slice(29, 40)
+  //   } 
 
-  },
+  // },
 
 
 
@@ -372,92 +372,35 @@ const model = {
   getComparisonsCount() {
     return this.getComparisons().length
   },
- 
-
-  // getSlice10() {
-  //   return this.products.slice(0, 2)
-  // },
-  // getSlice20() {
-  //   return this.products.slice(2, 6)
-  // },
-  // getSlice30() {
-  //   return this.products.slice(19, 29)
-  // },
-  // getSlice40() {
-  //   return this.products.slice(29, 39)
-  // },
 
   
-
-  getFilterPrice(priceFrom,priceTo){
-    function helper(product){
-      return (
-        product.price < priceFrom ||
-        product.price > priceTo
-      )
-    }
-    return this.products.filter(helper)
+  getRangePrice(from, to) {
+    return this.findedProducts.filter(product => from < product.price && product.price < to)
   },
 
-  // getSlice10AndSort(){
-  //   const findedProductSlice = this.getSlice10()
-  //   function helper(objA,objB){
-  //     return objA.price - objB.price
-  //   }
-  //   return findedProductSlice.toSorted(helper)
-        
-  // },
-  // getslice20AndSort(){
-  //   const findedProductSlice = this.getSlice20()
-  //   function helper(objA,objB){
-  //     return objA.price - objB.price
-  //   }
-  //   return findedProductSlice.toSorted(helper)
-        
-  // },
-  
-  // showPage(page,productsPerPage) {
-  //   const startIndex = page * productsPerPage;
-  //   const endIndex = startIndex + productsPerPage;
-  // },
-  // createPageButtons( productsPerPage) {
-  //   const totalPages = Math.ceil(products.length / productsPerPage);
-  //   // for (let i = 0; i < totalPages; i++) {
-
-  // },
-  
-  
-  
+  changePageNumbers(products, itemsOnPage, currentPage) {
+    let startIndex = itemsOnPage * currentPage
+    let endIndex = startIndex + itemsOnPage
+    return products.slice(startIndex, endIndex)
+  },
  
 }
 
-// console.log('Q'.includes('Q'));
-
-// console.log('Q'.includes('q'));
-// console.log('q'.includes('Q'));
-
-// console.log('Q'.toLowerCase().includes('q'));
-// console.log('q'.includes('Q'.toLowerCase()));
-
-let r 
-
-//.....
 
 // товары по поисковому запросу
-
 // r = model.findedProducts()
 // console.log(r.length)
-
 // model.setQuery('ГЕЙ')
 // r = model.findedProducts
 // console.log(r.length)
-
-
+let r
+// console.log(model.getRangePrice(model.products,400,800))
 model.setQuery('')
 model.getFindedProducts()
 r = model.findedProducts
+console.log(model.getRangePrice(200,500))
 console.log(model.findedProducts.length)
-
+console.log (model.changePageNumbers(r,3,0))
 
 // товары отсортированные
 
@@ -532,3 +475,12 @@ console.log(r.map(q => q.caption));
   //   const findedProduct = this.products.find(helper)
   //   return findedProduct
   // },
+
+
+  // console.log('Q'.includes('Q'));
+
+// console.log('Q'.includes('q'));
+// console.log('q'.includes('Q'));
+
+// console.log('Q'.toLowerCase().includes('q'));
+// console.log('q'.includes('Q'.toLowerCase()));
