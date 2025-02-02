@@ -209,15 +209,13 @@ const model = {
 
   // sortingType: '',
   // sortingType: 'byPriceASC',
-  findedProducts: [],
-
+  // sortingType: 'byPriceDESC',
+  // sortingType: 'byNameDESC',
   // valueSelect: '',
+  findedProducts: [],
   query: '',
   valueSelect: '10',
   sortingType: 'byNameASC',
-
-  // sortingType: 'byPriceDESC',
-  // sortingType: 'byNameDESC',
 
   setSortingType(sortingType) {
     this.sortingType = sortingType
@@ -225,68 +223,21 @@ const model = {
   setValueSelect(valueSelect) {
     this.valueSelect = valueSelect
   },
-
-  sortedProductsByPrice() {
-    function helperByPrice(objA, objB) {
-      return objA.price - objB.price
-    }
-
-    if (this.sortingType === 'byPriceASC') {
-      return this.findedProducts.toSorted(helperByPrice)
-    }
-
-    if (this.sortingType === 'byPriceDESC') {
-      return this.findedProducts.toSorted(helperByPrice).toReversed()
-    }
-
-    return []
-  },
-  sortedProductsByName() {
-    function helper(objA, objB) {
-      if (objA.caption < objB.caption) {
-        return -1
-      }
-    }
-
-    if (this.sortingType === 'byNameASC') {
-      return this.findedProducts.toSorted(helper)
-    }
-
-    if (this.sortingType === 'byNameDESC') {
-      return this.findedProducts.toSorted(helper).toReversed()
-    }
-
-    return []
-  },
-
   setQuery(query) {
     this.query = query
   },
 
-  getFindedProducts() {
-    function helper(product) {
-      return (
-        product.caption.toLowerCase().includes(this.query.toLowerCase()) ||
-        product.description.toLowerCase().includes(this.query.toLowerCase()) ||
-        product.category.toLowerCase().includes(this.query.toLowerCase())
-      )
-    }
-    this.findedProducts = this.products.filter(helper.bind(this))
+  getProductById(products, id) {
+    return (this.findedProduct = products.find(product => product.id === id))
   },
-
-  getProductById(id) {
-    function helper(product) {
-      return product.id === id
-    }
-    const findedProduct = this.products.find(helper)
-    return findedProduct
-  },
-
-  markAsFavoriteById(id) {
-    const findedProduct = this.getProductById(id)
+  markAsFavoriteById(products, id) {
+    const findedProduct = this.getProductById(products, id)
     if (findedProduct) {
       findedProduct.isFavorite = true
     }
+  },
+  getFavorites(products) {
+    return products.filter(product => product.isFavorite)
   },
   unmarkFavoriteById(id) {
     const findedProduct = this.getProductById(id)
@@ -294,14 +245,6 @@ const model = {
       findedProduct.isFavorite = false
     }
   },
-
-  getFavorites() {
-    function helper(product) {
-      return product.isFavorite
-    }
-    return this.products.filter(helper)
-  },
-
   getFavoritesCount() {
     return this.getFavorites().length
   },
@@ -312,18 +255,14 @@ const model = {
       findedProduct.isCart = true
     }
   },
+  getCarts(products) {
+    return products.filter(product => product.isCart)
+  },
   removeFromCartById(id) {
     const findedProduct = this.getProductById(id)
     if (findedProduct) {
       findedProduct.isCart = false
     }
-  },
-
-  getCarts() {
-    function helper(product) {
-      return product.isCart
-    }
-    return this.products.filter(helper)
   },
   getCartsCount() {
     return this.getCarts().length
@@ -335,34 +274,17 @@ const model = {
       findedProduct.isCompare = true
     }
   },
-
   unmarkComparisonById(id) {
     const findedProduct = this.getProductById(id)
     if (findedProduct) {
       findedProduct.isCompare = false
     }
   },
-
-  getComparisons() {
-    function helper(product) {
-      return product.isCompare
-    }
-    return this.products.filter(helper)
+  getComparisons(products) {
+    return products.filter(product => product.isCompare)
   },
   getComparisonsCount() {
     return this.getComparisons().length
-  },
-
-  getRangePrice(from, to) {
-    return this.findedProducts.filter(
-      product => from < product.price && product.price < to
-    )
-  },
-
-  changePageNumbers(products, itemsOnPage, currentPage) {
-    let startIndex = itemsOnPage * currentPage
-    let endIndex = startIndex + itemsOnPage
-    return products.slice(startIndex, endIndex)
   },
 }
 
@@ -372,11 +294,18 @@ const model = {
 // model.setQuery('ГЕЙ')
 // r = model.findedProducts
 // console.log(r.length)
+console.log(model.getProductById(model.products, 69))
+model.markAsFavoriteById(model.products, 14)
+console.log(model.getFavorites(model.products))
+console.log(model.getProductById(model.products, 69))
+model.findedProducts
+
 let r
 // console.log(model.getRangePrice(model.products,400,800))
-model.setQuery('')
-model.getFindedProducts()
+model.setQuery('оф')
+// model.getFindedProducts()
 r = model.findedProducts
+console.log(model.findProducts())
 console.log(model.getRangePrice(200, 500))
 console.log(model.findedProducts.length)
 console.log(model.changePageNumbers(r, 3, 0))
@@ -386,6 +315,7 @@ console.log(model.changePageNumbers(r, 3, 0))
 // model.setSortingType('byPriceASC')
 // r = model.sortedProductsByPrice()
 // console.log(r.map(q => q.price));
+
 model.setValueSelect('10')
 r = model.getSlice()
 console.log(r.length)
@@ -405,55 +335,9 @@ console.log(r.map(q => q.caption))
 // console.log(model.getSortedFromAToZ())
 // console.log(model.getSortedFromZToA())
 
-// model.markAsFavoriteById(14)
-// console.log(model.getFavorites())
 // // model.unmarkFavoriteById(14)
 // // console.log(model.getFavorites())
 // model.addToCartById(14)
 // console.log(model.getCarts())
 // model.markAsСomparisonById(77)
 // console.log(model.getСomparisons())
-
-// let numbers = [55, 77, 33, 88, 22, 11, 99, 66, 44]
-
-// let slicedNumbers = numbers.slice(3, 6)
-
-// slicedNumbers
-// numbers.sort()
-// let sortedNumbersAsc = numbers.toSorted()
-
-// sortedNumbersAsc
-// // numbers.reverse()
-// let sortedNumbersDesc = numbers.toReversed()
-
-// sortedNumbersDesc
-
-// sortedNumbersDesc = sortedNumbersAsc.toReversed()
-
-// sortedNumbersDesc
-
-// sortedNumbersDesc = numbers.toSorted().toReversed()
-
-// sortedNumbersDesc
-// getFilterPriceFrom(price) {
-//   function helper(product) {
-//     return product.price >= price
-//   }
-//   const findedProduct = this.products.find(helper)
-//   return findedProduct
-// },
-// getFilterPriceTo(price) {
-//   function helper(product) {
-//     return product.price <= price
-//   }
-//   const findedProduct = this.products.find(helper)
-//   return findedProduct
-// },
-
-// console.log('Q'.includes('Q'));
-
-// console.log('Q'.includes('q'));
-// console.log('q'.includes('Q'));
-
-// console.log('Q'.toLowerCase().includes('q'));
-// console.log('q'.includes('Q'.toLowerCase()));
