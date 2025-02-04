@@ -1,26 +1,3 @@
-const testPrices = [
-  {
-    caption: 'Геймерский',
-    price: 233,
-  },
-  {
-    caption: 'Геймерский',
-    price: 125,
-  },
-  {
-    caption: 'Офисный',
-    price: 600,
-  },
-  {
-    caption: 'Офисный',
-    price: 100,
-  },
-  {
-    caption: 'Стримерский',
-    price: 800,
-  },
-]
-
 function findProducts(products, query) {
   return products.filter(
     product =>
@@ -37,9 +14,9 @@ function rangePriceProducts(products, from, to) {
 }
 
 function sortProducts(products, sortingType) {
-  if (sortingType === 'ASC')
+  if (sortingType === 'byPriceASC')
     return products.toSorted((a, b) => a.price - b.price)
-  if (sortingType === 'DESC')
+  if (sortingType === 'byPriceDESC')
     return products.toSorted((a, b) => b.price - a.price)
   if (sortingType === 'byNameASC')
     return products.toSorted((a, b) => {
@@ -53,22 +30,78 @@ function sortProducts(products, sortingType) {
       .toReversed()
 }
 
-function paginateProducts(products, itemsOnPage, currentPage) {
-  let startIndex = itemsOnPage * currentPage
-  let endIndex = startIndex + itemsOnPage
+function paginateProducts(products, productsPerPage, currentPage) {
+  let startIndex = productsPerPage * currentPage
+  let endIndex = startIndex + productsPerPage
   return products.slice(startIndex, endIndex)
 }
 
-testPrices
-let answer = rangePriceProducts(testPrices, 233, 600)
+function computeProducts(products, options) {
+  const findedProducts = findProducts(products, options.query)
+  const rangedProducts = rangePriceProducts(
+    findedProducts,
+    options.priceFrom,
+    options.priceTo
+  )
+  const sortedProducts = sortProducts(rangedProducts, options.sortingType)
+  const paginatedProducts = paginateProducts(
+    sortedProducts,
+    options.productsPerPage,
+    options.currentPage
+  )
+  return paginatedProducts
+}
+
+const options = {
+  query: '',
+  productsPerPage: 2,
+  currentPage: 0,
+  sortingType: 'byPriceDESC',
+  priceFrom: -Infinity,
+  priceTo: Infinity,
+}
+
+const testProducts = [
+  {
+    caption: 'аГеймерский',
+    price: 233,
+  },
+  {
+    caption: 'бГеймерский',
+    price: 125,
+  },
+  {
+    caption: 'вОфисный',
+    price: 600,
+  },
+  {
+    caption: 'гОфисный',
+    price: 100,
+  },
+  {
+    caption: 'дОфисный',
+    price: 800,
+  },
+]
+
+let answer
+
+answer = computeProducts(testProducts, options)
 answer
 
-answer = findProducts(testPrices, 'офи')
+options.currentPage = 1
+
+answer = computeProducts(testProducts, options)
 answer
 
-// getFindedProducts(digit){
-//   return this.products.filter(product =>
-//   product.caption.toLowerCase().includes(digit.toLowerCase()) ||
-//   product.description.toLowerCase().includes(this.query.toLowerCase()) ||
-//   product.category.toLowerCase().includes(this.query.toLowerCase()) )
-// }
+options.currentPage = 2
+
+answer = computeProducts(testProducts, options)
+answer
+
+options.productsPerPage = 4
+options.currentPage = 0
+options.sortingType = 'byPriceASC'
+
+answer = computeProducts(testProducts, options)
+answer
