@@ -1,23 +1,39 @@
+const testPrices = [
+  {
+    caption: 'Геймерский',
+    price: 233,
+  },
+  {
+    caption: 'Геймерский',
+    price: 125,
+  },
+  {
+    caption: 'Офисный',
+    price: 600,
+  },
+  {
+    caption: 'Офисный',
+    price: 100,
+  },
+  {
+    caption: 'Стримерский',
+    price: 800,
+  },
+]
+
 function findProducts(products, query) {
   return products.filter(
     product =>
-      product.caption
-        .toLowerCase()
-        .toString()
-        .includes(query.toLowerCase().toString()) ||
-      product.description
-        .toLowerCase()
-        .toString()
-        .includes(query.toLowerCase().toString()) ||
-      product.category
-        .toLowerCase()
-        .toString()
-        .includes(query.toLowerCase().toString())
+      product.caption?.toLowerCase().includes(query.toLowerCase()) ||
+      product.description?.toLowerCase().includes(query.toLowerCase()) ||
+      product.category?.toLowerCase().includes(query.toLowerCase())
   )
 }
 
-function rangePriceProducts(products) {
-  return products.filter(product => from < product.price && product.price < to)
+function rangePriceProducts(products, from, to) {
+  return products.filter(
+    product => from <= product.price && product.price <= to
+  )
 }
 
 function sortProducts(products, sortingType) {
@@ -42,6 +58,13 @@ function paginateProducts(products, itemsOnPage, currentPage) {
   let endIndex = startIndex + itemsOnPage
   return products.slice(startIndex, endIndex)
 }
+
+testPrices
+let answer = rangePriceProducts(testPrices, 233, 600)
+answer
+
+answer = findProducts(testPrices, 'офи')
+answer
 
 // getFindedProducts(digit){
 //   return this.products.filter(product =>
