@@ -1,7 +1,7 @@
 function findProducts(products, query) {
   return products.filter(
     product =>
-      product.caption?.toLowerCase().includes(query.toLowerCase()) ||
+      product.caption.toLowerCase().includes(query.toLowerCase()) ||
       product.description?.toLowerCase().includes(query.toLowerCase()) ||
       product.category?.toLowerCase().includes(query.toLowerCase())
   )
@@ -103,5 +103,13 @@ options.productsPerPage = 4
 options.currentPage = 0
 options.sortingType = 'byPriceASC'
 
+answer = computeProducts(testProducts, options)
+answer
+
+options.productsPerPage = 5
+options.currentPage = 0
+options.sortingType = 'byPriceASC'
+options.priceFrom = 200
+options.priceTo = 600
 answer = computeProducts(testProducts, options)
 answer

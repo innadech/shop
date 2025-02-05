@@ -294,21 +294,21 @@ const model = {
 // model.setQuery('ГЕЙ')
 // r = model.findedProducts
 // console.log(r.length)
-console.log(model.getProductById(model.products, 69))
-model.markAsFavoriteById(model.products, 14)
-console.log(model.getFavorites(model.products))
-console.log(model.getProductById(model.products, 69))
-model.findedProducts
+// console.log(model.getProductById(model.products, 69))
+// model.markAsFavoriteById(model.products, 14)
+// console.log(model.getFavorites(model.products))
+// console.log(model.getProductById(model.products, 69))
+// model.findedProducts
 
-let r
-// console.log(model.getRangePrice(model.products,400,800))
-model.setQuery('оф')
-// model.getFindedProducts()
-r = model.findedProducts
-console.log(model.findProducts())
-console.log(model.getRangePrice(200, 500))
-console.log(model.findedProducts.length)
-console.log(model.changePageNumbers(r, 3, 0))
+// let r
+// // console.log(model.getRangePrice(model.products,400,800))
+// model.setQuery('оф')
+// // model.getFindedProducts()
+// r = model.findedProducts
+// console.log(model.findProducts())
+// console.log(model.getRangePrice(200, 500))
+// console.log(model.findedProducts.length)
+// console.log(model.changePageNumbers(r, 3, 0))
 
 // товары отсортированные
 
@@ -316,12 +316,12 @@ console.log(model.changePageNumbers(r, 3, 0))
 // r = model.sortedProductsByPrice()
 // console.log(r.map(q => q.price));
 
-model.setValueSelect('10')
-r = model.getSlice()
-console.log(r.length)
-model.setSortingType('byNameASC')
-model.sortedProductsByName()
-console.log(r.map(q => q.caption))
+// model.setValueSelect('10')
+// r = model.getSlice()
+// console.log(r.length)
+// model.setSortingType('byNameASC')
+// model.sortedProductsByName()
+// console.log(r.map(q => q.caption))
 
 // console.log(model.products)
 // console.log (model.getslice20AndSort())
