@@ -18,13 +18,13 @@ function generateProduct(product) {
   const elP = document.createElement('p')
   const elPB = document.createElement('b')
   const elDivRow = document.createElement('div')
-  const elDivCart= document.createElement('div')
-  const elDivCartButton= document.createElement('button')
-  const elDivFavorite= document.createElement('div')
-  const elDivFavoriteButton= document.createElement('button')
+  const elDivCart = document.createElement('div')
+  const elDivCartButton = document.createElement('button')
+  const elDivFavorite = document.createElement('div')
+  const elDivFavoriteButton = document.createElement('button')
   const elDivCompare = document.createElement('div')
-  const elDivCompareButton= document.createElement('button')
-  const elDivNew= document.createElement('div')
+  const elDivCompareButton = document.createElement('button')
+  const elDivNew = document.createElement('div')
 
   elDivWrapProduct.classList.add('wrap-product')
   elDivWrapProduct.setAttribute('data-product-id', product.id)
@@ -32,25 +32,25 @@ function generateProduct(product) {
   elA.classList.add('a-link')
   elA.setAttribute('href', '?type=product_card&id= ' + product.id + '')
   elDivWrapImg.classList.add('wrap-img')
-  elImg.setAttribute('src', './img/products/' + product.photos[0] + '')
+  const url = 'https://web-app.click/pc-shop/photos/products/computers/'
+  elImg.setAttribute('src', url + product.photos[0])
   elImg.setAttribute('alt', product.caption)
   elDivName.classList.add('wrap-h3')
   elH3.textContent = product.caption
 
   elLabelPower.setAttribute('for', product.attributes)
-  elLabelMaternal.setAttribute('for',product.attributes)
-  elLabelVolume.setAttribute('for',product.attributes)
-  elLabelStorage.setAttribute('for',product.attributes)
-  elLabelType.setAttribute('for',product.attributes)
-  elLabelTypeStorage.setAttribute('for',product.attributes)
-  elLabelFrequency.setAttribute('for',product.attributes)
+  elLabelMaternal.setAttribute('for', product.attributes)
+  elLabelVolume.setAttribute('for', product.attributes)
+  elLabelStorage.setAttribute('for', product.attributes)
+  elLabelType.setAttribute('for', product.attributes)
+  elLabelTypeStorage.setAttribute('for', product.attributes)
+  elLabelFrequency.setAttribute('for', product.attributes)
   elLabelPower.textContent = product.attributes[0]
   elLabelMaternal.textContent = product.caption
   elLabelVolume.textContent = product.caption
   elLabelType.textContent = product.caption
   elLabelTypeStorage.textContent = product.caption
   elLabelFrequency.textContent = product.caption
-
 
   elDivWrapP.classList.add('wrap-p')
   elPB.textContent = product.price + ' грн'
@@ -60,11 +60,10 @@ function generateProduct(product) {
   elDivFavorite.classList.add('favorite')
   elDivCompare.classList.add('compare')
   elDivNew.classList.add('new_')
-  
+
   elDivFavorite.onclick = onClickButtonAddFavorites
   elDivCart.onclick = onClickButtonAddCarts
   elDivCompare.onclick = onClickButtonAddCompares
-
 
   elDivWrapProduct.appendChild(elDivWrapA)
   elDivWrapA.appendChild(elA)
@@ -89,10 +88,10 @@ function generateProduct(product) {
   elDivFavorite.appendChild(elDivFavoriteButton)
   elDivRow.appendChild(elDivCompare)
   elDivCompare.appendChild(elDivCompareButton)
-  return  elDivWrapProduct
+  return elDivWrapProduct
 }
 
-function generatePage(number){
+function generatePage(number) {
   const paginationContainer = document.createElement('a')
   paginationContainer.classList.add('page')
   paginationContainer.textContent = number

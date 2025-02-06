@@ -16,22 +16,22 @@ function handleAddCompares(id) {
 }
 function handleSortProducts(sortingType) {
   options.sortingType = sortingType
-  renderContainerProduct(computeProducts(testProducts, options))
+  renderContainerProduct(computeProducts(products, options))
 }
-function handleSortedbyPriceDESC() {
-  renderContainerProduct(computeProducts(testProducts, options.sortingType))
-}
-function handleSortedbyCaptionASC() {
-  renderContainerProduct(computeProducts(testProducts, options.sortingType))
-}
-function handleSortedbyCaptionDESC() {
-  renderContainerProduct(computeProducts(testProducts, options.sortingType))
-}
-function handlePagination() {
-  renderContainerProduct(
-    computeProducts(testProducts, options.productsPerPage, options.currentPage)
-  )
-}
+// function handleSortedbyPriceDESC() {
+//   renderContainerProduct(computeProducts(testProducts, options.sortingType))
+// }
+// function handleSortedbyCaptionASC() {
+//   renderContainerProduct(computeProducts(testProducts, options.sortingType))
+// }
+// function handleSortedbyCaptionDESC() {
+//   renderContainerProduct(computeProducts(testProducts, options.sortingType))
+// }
+// function handlePagination() {
+//   renderContainerProduct(
+//     computeProducts(testProducts, options.productsPerPage, options.currentPage)
+//   )
+// }
 // function handleSlice20() {
 //   renderContainerProduct(model.getSlice20())
 // }
@@ -55,4 +55,4 @@ function handlegetslice20AndSortFromCheap() {
   renderContainerProduct(model.getslice20AndSort())
 }
 
-renderContainerProduct(model.products)
+renderContainerProduct(products)
