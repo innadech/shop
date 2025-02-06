@@ -1,4 +1,5 @@
 function findProducts(products, query) {
+  console.log(products)
   return products.filter(
     product =>
       product.caption.toLowerCase().includes(query.toLowerCase()) ||
@@ -54,7 +55,7 @@ function computeProducts(products, options) {
 
 const options = {
   query: '',
-  productsPerPage: 2,
+  productsPerPage: 10,
   currentPage: 0,
   sortingType: 'byPriceDESC',
   priceFrom: -Infinity,

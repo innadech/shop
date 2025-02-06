@@ -14,8 +14,9 @@ function handleAddCompares(id) {
   model.getComparisons()
   renderSpanCompare(model.getComparisonsCount())
 }
-function handleSorted() {
-  renderContainerProduct(computeProducts(testProducts, options.sortingType))
+function handleSortProducts(sortingType) {
+  options.sortingType = sortingType
+  renderContainerProduct(computeProducts(testProducts, options))
 }
 function handleSortedbyPriceDESC() {
   renderContainerProduct(computeProducts(testProducts, options.sortingType))

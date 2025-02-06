@@ -30,9 +30,10 @@ function onClickButtonAddCompares(e) {
   handleAddCompares(id)
 }
 function onChangeSorted(e) {
+  console.log(e.target.value)
   if (e.target.value === 'byPriceASC') {
     console.log(e.target.value === 'byPriceASC')
-    handleSortedbyPriceASC()
+    handleSortedbyPriceASC(e.target.value)
   }
   if (e.target.value === 'byPriceDESC') {
     handleSortedbyPriceDESC()
