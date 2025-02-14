@@ -48,4 +48,6 @@ function handleSetRange() {
   renderRangeMax(max)
 }
 
-renderContainerProduct(products)
+const computedProducts = computeProducts(products, options)
+renderContainerProduct(computedProducts)
+renderRangePrice(options.min, options.max, options.from, options.to)

@@ -10,6 +10,18 @@ function renderSpanCompare(text) {
   const elSpan = document.querySelector('#innerCompare')
   elSpan.innerHTML = text
 }
+
+function renderRangePrice(min, max, from, to) {
+  renderSpanRangePriceFrom(from)
+  renderSpanRangePriceTo(to)
+  renderInputRangePriceFromMax(max)
+  renderInputRangePriceFromMin(min)
+  renderInputRangePriceToMax(max)
+  renderInputRangePriceToMin(min)
+  renderInputRangePriceFromValue(from)
+  renderInputRangePriceToValue(to)
+}
+
 function renderSpanRangePriceFrom(price) {
   const elSpan = document.querySelector('#pf')
   elSpan.innerHTML = price
@@ -19,11 +31,23 @@ function renderSpanRangePriceTo(price) {
   elSpan.innerHTML = price
 }
 
-function renderRangeMax(max) {
+function renderInputRangePriceFromMax(max) {
+  document.querySelector('#price_from').max = max
+}
+function renderInputRangePriceFromMin(min) {
+  document.querySelector('#price_from').min = min
+}
+function renderInputRangePriceFromValue(val) {
+  document.querySelector('#price_from').value = val
+}
+function renderInputRangePriceToMax(max) {
   document.querySelector('#price_to').max = max
 }
-function renderRangeMin(min) {
+function renderInputRangePriceToMin(min) {
   document.querySelector('#price_to').min = min
+}
+function renderInputRangePriceToValue(val) {
+  document.querySelector('#price_to').value = val
 }
 
 function renderContainerProduct(products) {

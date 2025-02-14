@@ -53,6 +53,8 @@ function computeProducts(products, options) {
   options.totalPages = countTotalPages(sortedProducts, options.productsPerPage)
   options.max = findMax(sortedProducts)
   options.min = findMin(sortedProducts)
+  options.from = options.min
+  options.to = options.max
   return paginatedProducts
 }
 
