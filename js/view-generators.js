@@ -32,9 +32,11 @@ function generateProduct(product) {
   elA.classList.add('a-link')
   elA.setAttribute('href', '?type=product_card&id= ' + product.id + '')
   elDivWrapImg.classList.add('wrap-img')
+  elImg.setAttribute('src', './img/products/' + product.photos[0] + '')
   const url = 'https://web-app.click/pc-shop/photos/products/computers/'
   elImg.setAttribute('src', url + product.photos[0])
-  elImg.setAttribute('alt', product.caption)
+  // elImg.setAttribute('src', './img/products/' + product.photos[0] + '')
+  // elImg.setAttribute('alt', product.caption)
   elDivName.classList.add('wrap-h3')
   elH3.textContent = product.caption
 
@@ -91,9 +93,10 @@ function generateProduct(product) {
   return elDivWrapProduct
 }
 
-function generatePage(number) {
+function generatePageButton(numberPage) {
   const paginationContainer = document.createElement('a')
   paginationContainer.classList.add('page')
-  paginationContainer.textContent = number
+  paginationContainer.textContent = numberPage
+  paginationContainer.onclick = onClickButtonPage
   return paginationContainer
 }

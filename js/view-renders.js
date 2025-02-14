@@ -1,25 +1,32 @@
-function renderSpanFavorite(text){
+function renderSpanFavorite(text) {
   const elSpan = document.querySelector('#innerFavorite')
   elSpan.innerHTML = text
- }
-function renderSpanCart(text){
+}
+function renderSpanCart(text) {
   const elSpan = document.querySelector('#innerCart')
   elSpan.innerHTML = text
- }
-function renderSpanCompare(text){
+}
+function renderSpanCompare(text) {
   const elSpan = document.querySelector('#innerCompare')
   elSpan.innerHTML = text
- }
-function renderSpanFilterPriceFrom(price){
+}
+function renderSpanRangePriceFrom(price) {
   const elSpan = document.querySelector('#pf')
   elSpan.innerHTML = price
- }
-function renderSpanFilterPriceTo(price){
+}
+function renderSpanRangePriceTo(price) {
   const elSpan = document.querySelector('#pt')
   elSpan.innerHTML = price
- }
+}
 
- function renderContainerProduct(products) {
+function renderRangeMax(max) {
+  document.querySelector('#price_to').max = max
+}
+function renderRangeMin(min) {
+  document.querySelector('#price_to').min = min
+}
+
+function renderContainerProduct(products) {
   console.log(products)
   const elDivContainer = document.querySelector('.container-products')
   console.log(elDivContainer)
@@ -30,8 +37,11 @@ function renderSpanFilterPriceTo(price){
   }
 }
 
-function renderContainerPagination(number){
+function renderPagination(totalPages) {
   const elPagination = document.querySelector('.pagination')
-  const elGeneratePage = generatePage(number)
-  elPagination.appendChild(elGeneratePage)
+  elPagination.innerHTML = ''
+  for (let numberPage = 0; numberPage < totalPages; numberPage++) {
+    const elGeneratePage = generatePageButton(numberPage)
+    elPagination.appendChild(elGeneratePage)
+  }
 }

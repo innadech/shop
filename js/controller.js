@@ -1,58 +1,51 @@
-function handleAddFavorites(id) {
-  model.markAsFavoriteById(+id)
-  model.getFavorites()
+function handleAddFavorites(products, id) {
+  model.markAsFavoriteById(products, +id)
+  model.getFavorites(products)
   renderSpanFavorite(model.getFavoritesCount())
   // renderFavorites(model.getFavorites())
 }
-function handleAddCarts(id) {
-  model.addToCartById(+id)
-  model.getCarts()
-  renderSpanCart(model.getCartsCount())
-}
-function handleAddCompares(id) {
-  model.markAsComparisonById(+id)
-  model.getComparisons()
-  renderSpanCompare(model.getComparisonsCount())
-}
+// function handleAddCarts(id) {
+//   model.addToCartById(+id)
+//   model.getCarts()
+//   renderSpanCart(model.getCartsCount())
+// }
+// function handleAddCompares(id) {
+//   model.markAsComparisonById(+id)
+//   model.getComparisons()
+//   renderSpanCompare(model.getComparisonsCount())
+// }
 function handleSortProducts(sortingType) {
   options.sortingType = sortingType
   renderContainerProduct(computeProducts(products, options))
+  renderPagination(options.totalPages)
 }
-// function handleSortedbyPriceDESC() {
-//   renderContainerProduct(computeProducts(testProducts, options.sortingType))
-// }
-// function handleSortedbyCaptionASC() {
-//   renderContainerProduct(computeProducts(testProducts, options.sortingType))
-// }
-// function handleSortedbyCaptionDESC() {
-//   renderContainerProduct(computeProducts(testProducts, options.sortingType))
-// }
-// function handlePagination() {
-//   renderContainerProduct(
-//     computeProducts(testProducts, options.productsPerPage, options.currentPage)
-//   )
-// }
-// function handleSlice20() {
-//   renderContainerProduct(model.getSlice20())
-// }
-// function handleSlice30() {
-//   renderContainerProduct(model.getSlice30())
-// }
-// function handleSlice40() {
-//   renderContainerProduct(model.getSlice40())
-// }
-function handleFindProduct(query) {
-  const product = model.findProductByQuery(query)
-  renderContainerProduct(product)
+function handleFindProducts(query) {
+  options.query = query
+  options.currentPage = 0
+  renderContainerProduct(computeProducts(products, options))
+  renderPagination(options.totalPages)
 }
-function handleFilterPrice(priceFrom, priceTo) {
-  const product = model.getfilterPrice(+priceFrom, +priceTo)
-  renderContainerProduct(product)
-  renderSpanFilterPriceFrom(priceFrom)
-  renderSpanFilterPriceTo(priceTo)
+function handleRangePrice(from, to) {
+  options.priceFrom = +from
+  options.priceTo = +to
+  renderContainerProduct(computeProducts(products, options))
 }
-function handlegetslice20AndSortFromCheap() {
-  renderContainerProduct(model.getslice20AndSort())
+function handleSetProductsPerPage(perPage) {
+  options.productsPerPage = +perPage
+  options.currentPage = 0
+  renderContainerProduct(computeProducts(products, options))
+  renderPagination(options.totalPages)
+  renderRangeMax(options.max)
+  renderRangeMin(options.min)
+}
+function handleSetPage(currentPage) {
+  options.currentPage = +currentPage
+  const computedProducts = computeProducts(products, options)
+  renderContainerProduct(computedProducts)
+}
+function handleSetRange() {
+  const max = findMin(products)
+  renderRangeMax(max)
 }
 
 renderContainerProduct(products)
