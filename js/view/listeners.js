@@ -38,11 +38,12 @@ function onChangeSelectProductsPerPage(e) {
   handleSetProductsPerPage(e.target.value)
 }
 
-function onChangeRangePrice(e) {
-  const elFrom = document.querySelector('#price_from')
-  const elTo = document.querySelector('#price_to')
-  handleSetRangePrice(elFrom.value, elTo.value)
+function onChangeRangePriceFrom(e) {
+  console.log(e.target.value)
+  handleSetRangePriceFrom(e.target.value)
 
+  // const elFrom = document.querySelector('#price_from')
+  // const elTo = document.querySelector('#price_to')
   // console.log(e.target.value)
   // renderSpanRangePriceFrom(elFrom.value)
   // renderSpanRangePriceTo(elTo.value)

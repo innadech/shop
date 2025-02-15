@@ -12,8 +12,8 @@ elSelectList.onchange = onChangeSorted
 elSelectPagination.onchange = onChangeSelectProductsPerPage
 
 elOnclickFindProduct.onclick = onInputFindProduct
-elInputRangeFrom.onchange = onChangeRangePrice
-elInputRangeTo.onchange = onChangeRangePrice
+elInputRangeFrom.onchange = onChangeRangePriceFrom
+elInputRangeTo.onchange = onChangeRangePriceTo
 elButtonAddFavorites.onclick = onClickButtonAddFavorites
 elButtonAddCarts.onclick = onClickButtonAddCarts
 elButtonAddCompares.onclick = onClickButtonAddCompares

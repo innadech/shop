@@ -1,7 +1,7 @@
 function handleAddFavorites(products, id) {
-  model.markAsFavoriteById(products, +id)
-  model.getFavorites(products)
-  renderSpanFavorite(model.getFavoritesCount())
+  modelUserSelections.markAsFavoriteById(products, +id)
+  modelUserSelections.getFavorites(products)
+  renderSpanFavorite(modelUserSelections.getFavoritesCount())
   // renderFavorites(model.getFavorites())
 }
 // function handleAddCarts(id) {
@@ -14,40 +14,46 @@ function handleAddFavorites(products, id) {
 //   model.getComparisons()
 //   renderSpanCompare(model.getComparisonsCount())
 // }
+
 function handleSortProducts(sortingType) {
   options.sortingType = sortingType
-  renderContainerProduct(computeProducts(products, options))
+  renderContainerProduct(computeProducts())
   renderPagination(options.totalPages)
 }
+
 function handleFindProducts(query) {
   options.query = query
   options.currentPage = 0
-  renderContainerProduct(computeProducts(products, options))
+  renderContainerProduct(computeProducts())
   renderPagination(options.totalPages)
 }
+
 function handleRangePrice(from, to) {
   options.priceFrom = +from
   options.priceTo = +to
-  renderContainerProduct(computeProducts(products, options))
+  renderContainerProduct(computeProducts())
 }
+
 function handleSetProductsPerPage(perPage) {
   options.productsPerPage = +perPage
   options.currentPage = 0
-  renderContainerProduct(computeProducts(products, options))
+  renderContainerProduct(computeProducts())
   renderPagination(options.totalPages)
   renderRangeMax(options.max)
   renderRangeMin(options.min)
 }
+
 function handleSetPage(currentPage) {
   options.currentPage = +currentPage
-  const computedProducts = computeProducts(products, options)
-  renderContainerProduct(computedProducts)
-}
-function handleSetRange() {
-  const max = findMin(products)
-  renderRangeMax(max)
+  renderContainerProduct(computeProducts())
 }
 
-const computedProducts = computeProducts(products, options)
-renderContainerProduct(computedProducts)
-renderRangePrice(options.min, options.max, options.from, options.to)
+function handleSetRangePriceFrom(from) {
+  options.priceFrom = +from
+  renderContainerProduct(computeProducts())
+  renderRangePrice(options.min, options.max, options.priceFrom, options.priceTo)
+}
+
+renderContainerProduct(computeProducts())
+resetFromTo()
+renderRangePrice(options.min, options.max, options.priceFrom, options.priceTo)

@@ -21,7 +21,6 @@ function renderRangePrice(min, max, from, to) {
   renderInputRangePriceFromValue(from)
   renderInputRangePriceToValue(to)
 }
-
 function renderSpanRangePriceFrom(price) {
   const elSpan = document.querySelector('#pf')
   elSpan.innerHTML = price
@@ -30,21 +29,20 @@ function renderSpanRangePriceTo(price) {
   const elSpan = document.querySelector('#pt')
   elSpan.innerHTML = price
 }
-
 function renderInputRangePriceFromMax(max) {
   document.querySelector('#price_from').max = max
 }
 function renderInputRangePriceFromMin(min) {
   document.querySelector('#price_from').min = min
 }
-function renderInputRangePriceFromValue(val) {
-  document.querySelector('#price_from').value = val
-}
 function renderInputRangePriceToMax(max) {
   document.querySelector('#price_to').max = max
 }
 function renderInputRangePriceToMin(min) {
   document.querySelector('#price_to').min = min
+}
+function renderInputRangePriceFromValue(val) {
+  document.querySelector('#price_from').value = val
 }
 function renderInputRangePriceToValue(val) {
   document.querySelector('#price_to').value = val
