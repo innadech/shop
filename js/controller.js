@@ -17,6 +17,7 @@ function handleAddFavorites(products, id) {
 
 function handleSortProducts(sortingType) {
   options.sortingType = sortingType
+  options.currentPage = 0
   renderContainerProduct(computeProducts())
   renderPagination(options.totalPages)
 }
@@ -28,11 +29,11 @@ function handleFindProducts(query) {
   renderPagination(options.totalPages)
 }
 
-function handleRangePrice(from, to) {
-  options.priceFrom = +from
-  options.priceTo = +to
-  renderContainerProduct(computeProducts())
-}
+// function handleRangePrice(from, to) {
+//   options.priceFrom = +from
+//   options.priceTo = +to
+//   renderContainerProduct(computeProducts())
+// }
 
 function handleSetProductsPerPage(perPage) {
   options.productsPerPage = +perPage
@@ -51,9 +52,21 @@ function handleSetPage(currentPage) {
 function handleSetRangePriceFrom(from) {
   options.priceFrom = +from
   renderContainerProduct(computeProducts())
+  renderPagination(options.totalPages)
   renderRangePrice(options.min, options.max, options.priceFrom, options.priceTo)
+}
+function handleSetRangePriceTo(to) {
+  options.priceTo = +to
+  renderContainerProduct(computeProducts())
+  renderPagination(options.totalPages)
+  renderRangePrice(options.min, options.max, options.priceFrom, options.priceTo)
+}
+function handleFindCheckboxProducts(attributes) {
+  const finded = filterCheckboxProducts(products, attributes)
+  renderContainerProduct(finded)
 }
 
 renderContainerProduct(computeProducts())
+renderPagination(options.totalPages)
 resetFromTo()
 renderRangePrice(options.min, options.max, options.priceFrom, options.priceTo)

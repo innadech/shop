@@ -7,6 +7,9 @@ const elOnclickFindProduct = document.querySelector('#find-product')
 const elInputRangeFrom = document.querySelector('#price_from')
 const elInputRangeTo = document.querySelector('#price_to')
 const elPage = document.querySelector('.page')
+const elFilter = document.querySelector('.filter')
+// const eLCheckbox = document.querySelectorAll('.input[type="checkbox']')
+// const eLCheckbox = document.querySelectorAll('.wrap-checkbox:checked')
 
 elSelectList.onchange = onChangeSorted
 elSelectPagination.onchange = onChangeSelectProductsPerPage
@@ -17,5 +20,7 @@ elInputRangeTo.onchange = onChangeRangePriceTo
 elButtonAddFavorites.onclick = onClickButtonAddFavorites
 elButtonAddCarts.onclick = onClickButtonAddCarts
 elButtonAddCompares.onclick = onClickButtonAddCompares
+
+elFilter.onclick = onClickCheckbox
 
 // elPage.onclick = onClickButtonPage

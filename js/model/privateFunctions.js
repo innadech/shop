@@ -45,5 +45,46 @@ function countTotalPages(products, productsPerPage) {
 
 function updateMinMax(products) {
   options.max = Math.max(...products.map(product => product.price))
-  options.mix = Math.min(...products.map(product => product.price))
+  options.min = Math.min(...products.map(product => product.price))
 }
+
+const testProducts = [
+  {
+    caption: 'аГеймерский',
+    price: 233,
+    attributes: '300W',
+  },
+  {
+    caption: 'бГеймерский',
+    price: 125,
+    attributes: '450W',
+  },
+  {
+    caption: 'вОфисный',
+    price: 600,
+    attributes: '400W',
+  },
+  {
+    caption: 'гОфисный',
+    price: 100,
+    attributes: '600W',
+  },
+  {
+    caption: 'дОфисный',
+    price: 800,
+    attributes: '400W',
+  },
+  {
+    caption: 'еОфисный',
+    price: 440,
+    attributes: '500W',
+  },
+]
+function filterCheckboxProducts(products, query) {
+  return products.filter(product =>
+    product.attributes.toLowerCase().includes(query.toLowerCase())
+  )
+}
+
+const answer = filterCheckboxProducts(testProducts, '500W')
+answer

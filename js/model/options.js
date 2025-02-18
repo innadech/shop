@@ -2,7 +2,7 @@ const options = {
   query: '',
   productsPerPage: 10,
   currentPage: 0,
-  sortingType: 'byPriceDESC',
+  sortingType: 'byPriceASC',
   priceFrom: -Infinity,
   priceTo: Infinity,
   totalPages: 0,

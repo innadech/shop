@@ -49,22 +49,17 @@ function onChangeRangePriceFrom(e) {
   // renderSpanRangePriceTo(elTo.value)
   // renderRangePrice(min, max, from, to)
 }
+function onChangeRangePriceTo(e) {
+  console.log(e.target.value)
+  handleSetRangePriceTo(e.target.value)
+}
 function onClickButtonPage(e) {
   console.log(e.target.innerHTML)
   handleSetPage(e.target.innerHTML)
 }
-// function onChangeRange(e) {
-//   const elRangeBTC = document.querySelector(`#pf'`)
-//   handleSetRange()
-// }
 
-// function onChangeRangeFilterPriceFrom() {
-//   const elInputRangeFrom = document.querySelector('#price_from')
-//   const elInputRangeTo = document.querySelector('#price_to')
-//   handleFilterPrice (elInputRangeFrom.value,elInputRangeTo.value)
-// }
-// function onChangeRangeFilterPriceTo() {
-//   const elInputRangeFrom = document.querySelector('#price_from')
-//   const elInputRangeTo = document.querySelector('#price_to')
-//   handleFilterPrice (elInputRangeFrom.value,elInputRangeTo.value)
-// }
+function onClickCheckbox() {
+  const elCheckbox = document.querySelector('input[type="checkbox"]:checked')
+  console.log(elCheckbox.value.toString())
+  handleFindCheckboxProducts(elCheckbox.value.toString())
+}
