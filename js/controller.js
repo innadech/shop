@@ -1,9 +1,8 @@
-function handleAddFavorites(products, id) {
-  modelUserSelections.markAsFavoriteById(products, +id)
-  modelUserSelections.getFavorites(products)
-  renderSpanFavorite(modelUserSelections.getFavoritesCount())
-  // renderFavorites(model.getFavorites())
-}
+// function handleAddFavorites(products, id) {
+//   modelUserSelections.markAsFavoriteById(products, +id)
+//   modelUserSelections.getFavorites(products)
+//   renderSpanFavorite(modelUserSelections.getFavoritesCount())
+// }
 // function handleAddCarts(id) {
 //   model.addToCartById(+id)
 //   model.getCarts()
@@ -29,19 +28,11 @@ function handleFindProducts(query) {
   renderPagination(options.totalPages)
 }
 
-// function handleRangePrice(from, to) {
-//   options.priceFrom = +from
-//   options.priceTo = +to
-//   renderContainerProduct(computeProducts())
-// }
-
 function handleSetProductsPerPage(perPage) {
   options.productsPerPage = +perPage
   options.currentPage = 0
   renderContainerProduct(computeProducts())
   renderPagination(options.totalPages)
-  renderRangeMax(options.max)
-  renderRangeMin(options.min)
 }
 
 function handleSetPage(currentPage) {
