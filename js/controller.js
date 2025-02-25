@@ -2,17 +2,20 @@ function handleAddFavorites(id) {
   console.log(products)
   modelUserSelections.markAsFavoriteById(products, +id)
   modelUserSelections.getFavorites(products)
-  renderSpanFavorite(modelUserSelections.getFavoritesCount())
+  const favoritesCount = modelUserSelections.getFavoritesCount(products)
+  renderSpanFavorite(favoritesCount)
 }
 function handleAddCarts(id) {
   modelUserSelections.addToCartById(computeProducts(), +id)
   modelUserSelections.getCarts(computeProducts())
-  renderSpanCart(modelUserSelections.getCartsCount())
+  const cartsCount = modelUserSelections.getCartsCount(products)
+  renderSpanCart(cartsCount)
 }
 function handleAddCompares(id) {
   modelUserSelections.markAsComparisonById(computeProducts(), +id)
   modelUserSelections.getComparisons(computeProducts())
-  renderSpanCompare(modelUserSelections.getComparisonsCount())
+  const comparisonsCount = modelUserSelections.getComparisonsCount(products)
+  renderSpanCompare(comparisonsCount)
 }
 
 function handleSortProducts(sortingType) {

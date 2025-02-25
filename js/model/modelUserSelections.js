@@ -1,24 +1,24 @@
 const modelUserSelections = {
-  getProductById(products, id) {
+  getProductById(_, id) {
     return products.find(product => product.id === id)
   },
 
-  getFavorites(products) {
+  getFavorites() {
     return products.filter(product => product.isFavorite)
   },
 
   getFavoritesCount() {
-    return this.getFavorites().length
+    return this.getFavorites(products).length
   },
 
-  markAsFavoriteById(products, id) {
+  markAsFavoriteById(_, id) {
     const findedProduct = this.getProductById(products, id)
     if (findedProduct) {
       findedProduct.isFavorite = true
     }
   },
 
-  unmarkFavoriteById(products, id) {
+  unmarkFavoriteById(_, id) {
     const findedProduct = this.getProductById(products, id)
     if (findedProduct) {
       findedProduct.isFavorite = false
@@ -30,39 +30,39 @@ const modelUserSelections = {
   },
 
   getCartsCount() {
-    return this.getCarts().length
+    return this.getCarts(products).length
   },
 
-  addToCartById(products, id) {
+  addToCartById(_, id) {
     const findedProduct = this.getProductById(products, id)
     if (findedProduct) {
       findedProduct.isCart = true
     }
   },
 
-  removeFromCartById(products, id) {
+  removeFromCartById(_, id) {
     const findedProduct = this.getProductById(products, id)
     if (findedProduct) {
       findedProduct.isCart = false
     }
   },
 
-  getComparisons(products) {
+  getComparisons() {
     return products.filter(product => product.isCompare)
   },
 
   getComparisonsCount() {
-    return this.getComparisons().length
+    return this.getComparisons(products).length
   },
 
-  markAsComparisonById(products, id) {
+  markAsComparisonById(_, id) {
     const findedProduct = this.getProductById(products, id)
     if (findedProduct) {
       findedProduct.isCompare = true
     }
   },
 
-  unmarkComparisonById(products, id) {
+  unmarkComparisonById(_, id) {
     const findedProduct = this.getProductById(products, id)
     if (findedProduct) {
       findedProduct.isCompare = false
