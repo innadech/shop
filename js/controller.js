@@ -1,18 +1,19 @@
-// function handleAddFavorites(products, id) {
-//   modelUserSelections.markAsFavoriteById(products, +id)
-//   modelUserSelections.getFavorites(products)
-//   renderSpanFavorite(modelUserSelections.getFavoritesCount())
-// }
-// function handleAddCarts(id) {
-//   model.addToCartById(+id)
-//   model.getCarts()
-//   renderSpanCart(model.getCartsCount())
-// }
-// function handleAddCompares(id) {
-//   model.markAsComparisonById(+id)
-//   model.getComparisons()
-//   renderSpanCompare(model.getComparisonsCount())
-// }
+function handleAddFavorites(id) {
+  console.log(products)
+  modelUserSelections.markAsFavoriteById(products, +id)
+  modelUserSelections.getFavorites(products)
+  renderSpanFavorite(modelUserSelections.getFavoritesCount())
+}
+function handleAddCarts(id) {
+  modelUserSelections.addToCartById(computeProducts(), +id)
+  modelUserSelections.getCarts(computeProducts())
+  renderSpanCart(modelUserSelections.getCartsCount())
+}
+function handleAddCompares(id) {
+  modelUserSelections.markAsComparisonById(computeProducts(), +id)
+  modelUserSelections.getComparisons(computeProducts())
+  renderSpanCompare(modelUserSelections.getComparisonsCount())
+}
 
 function handleSortProducts(sortingType) {
   options.sortingType = sortingType
@@ -52,8 +53,8 @@ function handleSetRangePriceTo(to) {
   renderPagination(options.totalPages)
   renderRangePrice(options.min, options.max, options.priceFrom, options.priceTo)
 }
-function handleFindCheckboxProducts(attributes) {
-  const finded = filterCheckboxProducts(products, attributes)
+function handleFindProductsByAttributeValue(attributes) {
+  const finded = findProductsByAttributeValue(computeProducts(), attributes)
   renderContainerProduct(finded)
 }
 

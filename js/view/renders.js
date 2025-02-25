@@ -10,6 +10,9 @@ function renderSpanCompare(text) {
   const elSpan = document.querySelector('#innerCompare')
   elSpan.innerHTML = text
 }
+function renderPBPrice(uahprice) {
+  elPB = uahprice
+}
 
 function renderRangePrice(min, max, from, to) {
   renderSpanRangePriceFrom(from)

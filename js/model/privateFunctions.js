@@ -52,79 +52,122 @@ const testProducts = [
   {
     caption: 'аГеймерский',
     price: 233,
-    attributes: '300W',
+    attributes: {
+      'Тип накопителя': 'SSD',
+      'Материнская плата': 'Asus',
+      'Количество ядер': '6',
+      'Частота ОЗУ': '3200Mhz',
+      'Тип ОЗУ': 'DDR4',
+      'Объем накопителя': '500Gb',
+      'Объем ОЗУ': '8Gb',
+      Процессор: 'Intel',
+      'Частота процессора': '4.1 Ghz',
+      'Блок питания': '450W',
+    },
   },
   {
     caption: 'бГеймерский',
     price: 125,
-    attributes: '450W',
+    attributes: {
+      'Тип накопителя': 'SSD',
+      'Материнская плата': 'Asus',
+      'Количество ядер': '6',
+      'Частота ОЗУ': '3200Mhz',
+      'Тип ОЗУ': 'DDR4',
+      'Объем накопителя': '500Gb',
+      'Объем ОЗУ': '8Gb',
+      Процессор: 'Intel',
+      'Частота процессора': '4.1 Ghz',
+      'Блок питания': '550W',
+    },
   },
   {
     caption: 'вОфисный',
     price: 600,
-    attributes: '400W',
+    attributes: {
+      'Тип накопителя': 'SSD',
+      'Материнская плата': 'Asus',
+      'Количество ядер': '6',
+      'Частота ОЗУ': '3200Mhz',
+      'Тип ОЗУ': 'DDR4',
+      'Объем накопителя': '500Gb',
+      'Объем ОЗУ': '8Gb',
+      Процессор: 'Intel',
+      'Частота процессора': '4.1 Ghz',
+      'Блок питания': '550W',
+    },
   },
   {
     caption: 'гОфисный',
     price: 100,
-    attributes: '600W',
+    attributes: {
+      'Тип накопителя': 'SSD',
+      'Материнская плата': 'Asus',
+      'Количество ядер': '6',
+      'Частота ОЗУ': '3200Mhz',
+      'Тип ОЗУ': 'DDR4',
+      'Объем накопителя': '500Gb',
+      'Объем ОЗУ': '8Gb',
+      Процессор: 'Intel',
+      'Частота процессора': '4.1 Ghz',
+      'Блок питания': '750W',
+    },
   },
   {
     caption: 'дОфисный',
     price: 800,
-    attributes: '400W',
+    attributes: {
+      'Тип накопителя': 'SSD',
+      'Материнская плата': 'Asus',
+      'Количество ядер': '6',
+      'Частота ОЗУ': '3200Mhz',
+      'Тип ОЗУ': 'DDR4',
+      'Объем накопителя': '500Gb',
+      'Объем ОЗУ': '8Gb',
+      Процессор: 'Intel',
+      'Частота процессора': '4.1 Ghz',
+      'Блок питания': '950W',
+    },
   },
   {
     caption: 'еОфисный',
     price: 440,
-    attributes: '500W',
+    attributes: {
+      'Тип накопителя': 'SSD',
+      'Материнская плата': 'Asus',
+      'Количество ядер': '6',
+      'Частота ОЗУ': '3200Mhz',
+      'Тип ОЗУ': 'DDR4',
+      'Объем накопителя': '500Gb',
+      'Объем ОЗУ': '8Gb',
+      Процессор: 'Intel',
+      'Частота процессора': '4.1 Ghz',
+      'Блок питания': '1050W',
+    },
   },
 ]
 
-function filterCheckboxProducts(products, query) {
-  return products.filter(product =>
-    product.attributes.toLowerCase().includes(query.toLowerCase())
-  )
+function findProductsByAttributeValue(products, attributeValue) {
+  let foundProductsByAttributes = []
+  for (let product of products) {
+    for (let attributeKey in product.attributes) {
+      attributeKey
+      console.log(product.attributes[attributeKey])
+      if (product.attributes[attributeKey] === attributeValue) {
+        foundProductsByAttributes.push(product)
+      }
+    }
+  }
+  return foundProductsByAttributes
 }
+// const foundObject = findProductsByAttributeValue(testProducts, '550W')
+// console.log(foundObject)
 
-const answer = filterCheckboxProducts(testProducts, '500W')
+function uahPrice(products) {
+  return products.map(product => product.price * 40)
+}
+// const newAnswer = (products)=>products.map(product => product.price * 40)
+
+const answer = uahPrice(testProducts)
 answer
-
-const attributes = {
-  'Тип накопителя': 'SSD',
-  'Материнская плата': 'Asus',
-  'Количество ядер': '6',
-  'Частота ОЗУ': '3200Mhz',
-  'Тип ОЗУ': 'DDR4',
-  'Объем накопителя': '500Gb',
-  'Объем ОЗУ': '8Gb',
-  Процессор: 'Intel',
-  'Частота процессора': '4.1 Ghz',
-  'Блок питания': '750W',
-}
-
-console.log('Процессор' in attributes)
-console.log('Процессоры' in attributes)
-
-for (const attribute in attributes) {
-  console.log(attribute)
-}
-
-const object = {
-  a: 1,
-  b: 3,
-  c: 5,
-}
-
-const key = 'a'
-console.log(object.a)
-console.log(object['a'])
-console.log(object[key])
-
-for (const key in object) {
-  console.log(key)
-  console.log(object[key])
-}
-
-console.log('a' in object)
-console.log('d' in object)
+testProducts

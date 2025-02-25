@@ -18,4 +18,4 @@ elSelectPagination.onchange = onChangeSelectProductsPerPage
 elFindProduct.onclick = onInputFindProduct
 elInputRangeFrom.onchange = onChangeRangePriceFrom
 elInputRangeTo.onchange = onChangeRangePriceTo
-elFilter.onclick = onClickCheckbox
+elFilter.onclick = onClickFilterCheckbox

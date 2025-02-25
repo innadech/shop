@@ -1,24 +1,24 @@
-// function onClickButtonAddFavorites(e) {
-//   const elWrapProduct = e.target.closest('.wrap-product')
-//   const productId = elWrapProduct.getAttribute('data-product-id')
-//   handleAddFavorites(productId)
-// }
+function onClickButtonAddFavorites(e) {
+  const elWrapProduct = e.target.closest('.wrap-product')
+  const productId = elWrapProduct.getAttribute('data-product-id')
+  handleAddFavorites(productId)
+}
 
-// function onClickButtonAddCarts(e) {
-//   const id =
-//     e.target.parentElement.parentElement.parentElement.getAttribute(
-//       'data-product-id'
-//     )
-//   handleAddCarts(id)
-// }
+function onClickButtonAddCarts(e) {
+  const id =
+    e.target.parentElement.parentElement.parentElement.getAttribute(
+      'data-product-id'
+    )
+  handleAddCarts(id)
+}
 
-// function onClickButtonAddCompares(e) {
-//   const id =
-//     e.target.parentElement.parentElement.parentElement.getAttribute(
-//       'data-product-id'
-//     )
-//   handleAddCompares(id)
-// }
+function onClickButtonAddCompares(e) {
+  const id =
+    e.target.parentElement.parentElement.parentElement.getAttribute(
+      'data-product-id'
+    )
+  handleAddCompares(id)
+}
 
 function onChangeSorted(e) {
   handleSortProducts(e.target.value)
@@ -45,7 +45,8 @@ function onClickButtonPage(e) {
   handleSetPage(e.target.innerHTML)
 }
 
-function onClickCheckbox() {
+function onClickFilterCheckbox() {
   const elCheckbox = document.querySelector('input[type="checkbox"]:checked')
-  handleFindCheckboxProducts(elCheckbox.value.toString())
+  console.log(elCheckbox.value.toString())
+  handleFindProductsByAttributeValue(elCheckbox.value.toString())
 }

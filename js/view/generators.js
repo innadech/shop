@@ -63,9 +63,9 @@ function generateProduct(product) {
   elDivCompare.classList.add('compare')
   elDivNew.classList.add('new_')
 
-  // elDivFavorite.onclick = onClickButtonAddFavorites
-  // elDivCart.onclick = onClickButtonAddCarts
-  // elDivCompare.onclick = onClickButtonAddCompares
+  elDivFavorite.onclick = onClickButtonAddFavorites
+  elDivCart.onclick = onClickButtonAddCarts
+  elDivCompare.onclick = onClickButtonAddCompares
 
   elDivWrapProduct.appendChild(elDivWrapA)
   elDivWrapA.appendChild(elA)
