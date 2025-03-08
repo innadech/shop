@@ -33,13 +33,13 @@ function sortProducts(products, sortingType) {
 }
 
 function paginateProducts(products, productsPerPage, currentPage) {
-  options.totalPages = countTotalPages(products, productsPerPage)
+  options.totalPages = getTotalPages(products, productsPerPage)
   const startIndex = productsPerPage * currentPage
   const endIndex = startIndex + productsPerPage
   return products.slice(startIndex, endIndex)
 }
 
-function countTotalPages(products, productsPerPage) {
+function getTotalPages(products, productsPerPage) {
   return Math.ceil(products.length / productsPerPage)
 }
 
