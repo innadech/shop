@@ -35,12 +35,12 @@ function getPaginatedProducts(products, pageSize, currentPage) {
   return products.slice(startIndex, endIndex)
 }
 
-function getTotalPages(products, pageSize) {
-  return Math.ceil(products.length / pageSize)
+function getSortedProductsLength(products) {
+  return products.length
 }
 
-function getSortedProductsLength(sortedProducts) {
-  return sortedProducts.length
+function getTotalPages(productsLength, pageSize) {
+  return Math.ceil(productsLength / pageSize)
 }
 
 function getMinPrice(products) {
