@@ -19,22 +19,20 @@ function handleAddCompares(id) {
 }
 
 function handleSortProducts(sortingType) {
-  options.sortingType = sortingType
-  options.currentPage = 0
-  renderContainerProduct(computeProducts())
-  renderPagination(options.totalPages)
+  state.sortingType = sortingType
+  renderContainerProduct(paginatedProducts())
+  renderPagination(totalPages())
 }
 
 function handleFindProducts(query) {
-  options.query = query
-  options.currentPage = 0
-  renderContainerProduct(computeProducts())
-  renderPagination(options.totalPages)
+  state.searchQuery = query
+  renderContainerProduct(paginatedProducts())
+  renderPagination(totalPages())
 }
 
 function handleSetProductsPerPage(perPage) {
   options.productsPerPage = +perPage
-  options.currentPage = 0
+
   renderContainerProduct(computeProducts())
   renderPagination(options.totalPages)
 }
@@ -61,7 +59,6 @@ function handleFindProductsByAttributeValue(attributes) {
   renderContainerProduct(finded)
 }
 
-renderContainerProduct(computeProducts())
-renderPagination(options.totalPages)
-resetFromTo()
-renderRangePrice(options.min, options.max, options.priceFrom, options.priceTo)
+renderContainerProduct(paginatedProducts())
+renderPagination(totalPages())
+renderRangePrice(minPrice(), maxPrice(), state.priceFrom, state.priceTo)

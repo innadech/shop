@@ -22,8 +22,12 @@ function sortedProductsLength() {
   return getSortedProductsLength(sortedProducts())
 }
 
+let oldTotalPages = 0
 function totalPages() {
-  return getTotalPages(sortedProductsLength(), state.pageSize)
+  const newTotalPages = getTotalPages(sortedProductsLength(), state.pageSize)
+  if (oldTotalPages !== newTotalPages) state.currentPage = 0
+  oldTotalPages = newTotalPages
+  return newTotalPages
 }
 
 function minPrice() {

@@ -4,5 +4,5 @@ const state = {
   currentPage: 0,
   sortingType: 'byPriceASC',
   priceFrom: 0,
-  priceTo: 0,
+  priceTo: Number.MAX_SAFE_INTEGER,
 }
