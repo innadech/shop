@@ -68,4 +68,10 @@ const modelUserSelections = {
       findedProduct.isCompare = false
     }
   },
+  // markAsCheckedById(_,id){
+  //   const findedProduct = this.getProductById(products, id)
+  //   if (findedProduct) {
+  //     findedProduct.isChecked = true
+  //   }
+  // }
 }

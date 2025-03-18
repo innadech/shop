@@ -30,33 +30,35 @@ function handleFindProducts(query) {
   renderPagination(totalPages())
 }
 
-function handleSetProductsPerPage(perPage) {
-  options.productsPerPage = +perPage
-
-  renderContainerProduct(computeProducts())
-  renderPagination(options.totalPages)
+function handleSetProductsPerPage(pagesize) {
+  state.pageSize = +pagesize
+  renderContainerProduct(paginatedProducts())
+  renderPagination(totalPages())
 }
 
 function handleSetPage(currentPage) {
-  options.currentPage = +currentPage
-  renderContainerProduct(computeProducts())
+  state.currentPage = +currentPage
+  renderContainerProduct(paginatedProducts())
 }
 
 function handleSetRangePriceFrom(from) {
-  options.priceFrom = +from
-  renderContainerProduct(computeProducts())
-  renderPagination(options.totalPages)
-  renderRangePrice(options.min, options.max, options.priceFrom, options.priceTo)
+  state.priceFrom = +from
+  renderContainerProduct(paginatedProducts())
+  renderPagination(totalPages())
+  renderRangePrice(minPrice(), maxPrice(), state.priceFrom, state.priceTo)
 }
 function handleSetRangePriceTo(to) {
-  options.priceTo = +to
-  renderContainerProduct(computeProducts())
-  renderPagination(options.totalPages)
-  renderRangePrice(options.min, options.max, options.priceFrom, options.priceTo)
+  state.priceTo = +to
+  renderContainerProduct(paginatedProducts())
+  renderPagination(totalPages())
+  renderRangePrice(minPrice(), maxPrice(), state.priceFrom, state.priceTo)
 }
 function handleFindProductsByAttributeValue(attributes) {
-  const finded = findProductsByAttributeValue(computeProducts(), attributes)
+  console.log(paginatedProducts())
+  const finded = findProductsByAttributeValue(paginatedProducts(), attributes)
+  console.log(finded)
   renderContainerProduct(finded)
+  renderPagination(totalPages())
 }
 
 renderContainerProduct(paginatedProducts())

@@ -50,3 +50,19 @@ function getMinPrice(products) {
 function getMaxPrice(products) {
   return Math.max(...products.map(product => product.price))
 }
+function findProductsByAttributeValue(products, attributeValue) {
+  let foundProductsByAttributes = []
+  for (let product of products) {
+    for (let attributeKey in product.attributes) {
+      attributeKey
+      console.log(product.attributes[attributeKey])
+      if (product.attributes[attributeKey] === attributeValue) {
+        foundProductsByAttributes.push(product)
+      }
+    }
+  }
+  return foundProductsByAttributes
+}
+function uahPrice(products) {
+  return products.map(product => product.price * 40)
+}
