@@ -1,3 +1,20 @@
+function getConvertedCurrencyProducts(products) {
+  // const copyProducts = []
+  // for (const product of products) {
+  //   const obj = {}
+  //   obj.id = product.id
+  //   obj.price = product.price * 40
+  //   obj.caption = product.caption
+  //   obj.description = product.description
+  //   obj.category = product.category
+  //   obj.attributes = product.attributes
+  //   obj.photos = product.photos
+  //   copyProducts.push(obj)
+  // }
+
+  return products.map(p => ({ ...p, price: p.price * 40 }))
+}
+
 function getSearchedProducts(products, searchQuery) {
   return products.filter(
     product =>
@@ -50,6 +67,7 @@ function getMinPrice(products) {
 function getMaxPrice(products) {
   return Math.max(...products.map(product => product.price))
 }
+
 function findProductsByAttributeValue(products, attributeValue) {
   let foundProductsByAttributes = []
   for (let product of products) {
@@ -62,7 +80,4 @@ function findProductsByAttributeValue(products, attributeValue) {
     }
   }
   return foundProductsByAttributes
-}
-function uahPrice(products) {
-  return products.map(product => product.price * 40)
 }

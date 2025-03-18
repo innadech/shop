@@ -7,13 +7,7 @@ function generateProduct(product) {
   const elDivName = document.createElement('div')
   const elH3 = document.createElement('h')
   const elDivLabel = document.createElement('div')
-  const elLabelPower = document.createElement('label')
-  const elLabelMaternal = document.createElement('label')
-  const elLabelVolume = document.createElement('label')
-  const elLabelStorage = document.createElement('label')
-  const elLabelType = document.createElement('label')
-  const elLabelTypeStorage = document.createElement('label')
-  const elLabelFrequency = document.createElement('label')
+
   const elDivWrapP = document.createElement('div')
   const elP = document.createElement('p')
   const elPB = document.createElement('b')
@@ -40,19 +34,13 @@ function generateProduct(product) {
   elDivName.classList.add('wrap-h3')
   elH3.textContent = product.caption
 
-  elLabelPower.setAttribute('for', product.attributes['Тип ОЗУ'])
-  elLabelMaternal.setAttribute('for', product.attributes)
-  elLabelVolume.setAttribute('for', product.attributes)
-  elLabelStorage.setAttribute('for', product.attributes)
-  elLabelType.setAttribute('for', product.attributes)
-  elLabelTypeStorage.setAttribute('for', product.attributes)
-  elLabelFrequency.setAttribute('for', product.attributes)
-  elLabelPower.textContent = product.attributes[0]
-  elLabelMaternal.textContent = product.caption
-  // elLabelVolume.textContent = product.captio
-  // elLabelType.textContent = product.
-  // elLabelTypeStorage.textContent = product.caption
-  // elLabelFrequency.textContent = product.caption
+  for (const key in product.attributes) {
+    const elLabel = document.createElement('label')
+    console.log(product.attributes[key])
+    elLabel.textContent = product.attributes[key]
+    elLabel.setAttribute('for', product.attributes[key])
+    elDivLabel.appendChild(elLabel)
+  }
 
   elDivWrapP.classList.add('wrap-p')
   elPB.textContent = product.price + ' грн'
@@ -74,12 +62,7 @@ function generateProduct(product) {
   elA.appendChild(elDivName)
   elDivName.appendChild(elH3)
   elDivWrapProduct.appendChild(elDivLabel)
-  elDivLabel.appendChild(elLabelPower)
-  elDivLabel.appendChild(elLabelMaternal)
-  elDivLabel.appendChild(elLabelVolume)
-  elDivLabel.appendChild(elLabelStorage)
-  elDivLabel.appendChild(elLabelTypeStorage)
-  elDivLabel.appendChild(elLabelFrequency)
+
   elDivWrapProduct.appendChild(elDivWrapP)
   elDivWrapP.appendChild(elP)
   elP.appendChild(elPB)

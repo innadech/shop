@@ -1,5 +1,11 @@
+function convertedCurrencyProducts() {
+  return getConvertedCurrencyProducts(products)
+}
+
 function searchedProducts() {
-  return getSearchedProducts(products, state.searchQuery)
+  const x = convertedCurrencyProducts()
+  console.log(x)
+  return getSearchedProducts(x, state.searchQuery)
 }
 
 function pricedProducts() {
