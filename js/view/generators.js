@@ -40,7 +40,7 @@ function generateProduct(product) {
   elDivName.classList.add('wrap-h3')
   elH3.textContent = product.caption
 
-  elLabelPower.setAttribute('for', product.attributes)
+  elLabelPower.setAttribute('for', product.attributes['Тип ОЗУ'])
   elLabelMaternal.setAttribute('for', product.attributes)
   elLabelVolume.setAttribute('for', product.attributes)
   elLabelStorage.setAttribute('for', product.attributes)
@@ -49,10 +49,10 @@ function generateProduct(product) {
   elLabelFrequency.setAttribute('for', product.attributes)
   elLabelPower.textContent = product.attributes[0]
   elLabelMaternal.textContent = product.caption
-  elLabelVolume.textContent = product.caption
-  elLabelType.textContent = product.caption
-  elLabelTypeStorage.textContent = product.caption
-  elLabelFrequency.textContent = product.caption
+  // elLabelVolume.textContent = product.captio
+  // elLabelType.textContent = product.
+  // elLabelTypeStorage.textContent = product.caption
+  // elLabelFrequency.textContent = product.caption
 
   elDivWrapP.classList.add('wrap-p')
   elPB.textContent = product.price + ' грн'
