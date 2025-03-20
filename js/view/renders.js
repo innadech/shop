@@ -59,6 +59,28 @@ function renderContainerProduct(products) {
     elDivContainer.appendChild(elProduct)
   }
 }
+function renderFilter(products) {
+  const elFilter = document.querySelector('.wrap-filter')
+  elFilter.innerHTML = ''
+  for (const product of products) {
+    const elGenerate = generateFilter(product)
+    elFilter.appendChild(elGenerate)
+  }
+}
+// function renderFilter(products) {
+//   const elFilter = document.querySelector('.wrap-filter')
+//   const elDivWrapProps = document.createElement('div')
+//   const elDivWrapPropsH3 = document.createElement('h3')
+//   elDivWrapProps.classList.add('wrap-props')
+//   elDivWrapPropsH3.textContent = 'Блок питания'
+//   elDivWrapProps.appendChild(elDivWrapPropsH3)
+//   elFilter.appendChild(elDivWrapProps)
+//   elFilter.innerHTML = ''
+//   for (const product of products) {
+//     const elGenerate = generateFilter(product)
+//     elDivWrapProps.appendChild(elGenerate)
+//   }
+// }
 
 function renderPagination(totalPages) {
   const elPagination = document.querySelector('.pagination')

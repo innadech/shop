@@ -76,6 +76,37 @@ function generateProduct(product) {
   return elDivWrapProduct
 }
 
+// function generateProps(product) {
+//   const elDivWrapProps = document.createElement('div')
+//   elDivWrapProps.classList.add('wrap-props')
+//   const elDivWrapPropsH3 = document.createElement('h3')
+//   elDivWrapPropsH3.textContent = 'Блок питания'
+//   elDivWrapProps.appendChild(elDivWrapPropsH3)
+//   const generate = generateFilter(product)
+//   elDivWrapProps.appendChild(generate)
+//   return elDivWrapProps
+// }
+function generateFilter(product) {
+  const elDivWrapCheckbox = document.createElement('div')
+  const elDivWrapCheckboxInput = document.createElement('input')
+  const elDivWrapCheckboxLabel = document.createElement('label')
+  elDivWrapCheckbox.classList.add('wrap-checkbox')
+
+  elDivWrapCheckboxInput.setAttribute('type', 'checkbox')
+  elDivWrapCheckboxInput.setAttribute(
+    'value',
+    product.attributes['Блок питания']
+  )
+  elDivWrapCheckboxInput.setAttribute('id', product.attributes['Блок питания'])
+  elDivWrapCheckboxInput.setAttribute('name', 'Блок питания')
+  elDivWrapCheckboxLabel.setAttribute('for', product.attributes['Блок питания'])
+  elDivWrapCheckboxLabel.textContent = product.attributes['Блок питания']
+
+  elDivWrapCheckbox.appendChild(elDivWrapCheckboxInput)
+  elDivWrapCheckbox.appendChild(elDivWrapCheckboxLabel)
+  return elDivWrapCheckbox
+}
+
 function generatePageButton(numberPage) {
   const paginationContainer = document.createElement('a')
   paginationContainer.classList.add('page')
