@@ -164,15 +164,3 @@ function findProductsByAttributeValue(products, attributeValue) {
   }
   return foundProductsByAttributes
 }
-// const foundObject = findProductsByAttributeValue(testProducts, '550W')
-// console.log(foundObject)
-
-// function uahPrice(products) {
-//   return products.map(product => product.price * 40)
-// }
-
-// const newAnswer = (products)=>products.map(product => product.price * 40)
-
-// const answer = uahPrice(testProducts)
-// answer
-// testProducts

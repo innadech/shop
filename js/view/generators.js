@@ -76,35 +76,77 @@ function generateProduct(product) {
   return elDivWrapProduct
 }
 
-// function generateProps(product) {
-//   const elDivWrapProps = document.createElement('div')
-//   elDivWrapProps.classList.add('wrap-props')
-//   const elDivWrapPropsH3 = document.createElement('h3')
-//   elDivWrapPropsH3.textContent = 'Блок питания'
-//   elDivWrapProps.appendChild(elDivWrapPropsH3)
-//   const generate = generateFilter(product)
-//   elDivWrapProps.appendChild(generate)
-//   return elDivWrapProps
-// }
-function generateFilter(product) {
+function generateCheckboxItem(value) {
   const elDivWrapCheckbox = document.createElement('div')
   const elDivWrapCheckboxInput = document.createElement('input')
   const elDivWrapCheckboxLabel = document.createElement('label')
   elDivWrapCheckbox.classList.add('wrap-checkbox')
 
   elDivWrapCheckboxInput.setAttribute('type', 'checkbox')
-  elDivWrapCheckboxInput.setAttribute(
-    'value',
-    product.attributes['Блок питания']
-  )
-  elDivWrapCheckboxInput.setAttribute('id', product.attributes['Блок питания'])
+  elDivWrapCheckboxInput.setAttribute('value', value)
+  elDivWrapCheckboxInput.setAttribute('id', value)
   elDivWrapCheckboxInput.setAttribute('name', 'Блок питания')
-  elDivWrapCheckboxLabel.setAttribute('for', product.attributes['Блок питания'])
-  elDivWrapCheckboxLabel.textContent = product.attributes['Блок питания']
+  elDivWrapCheckboxLabel.setAttribute('for', value)
+  elDivWrapCheckboxLabel.textContent = value
 
   elDivWrapCheckbox.appendChild(elDivWrapCheckboxInput)
   elDivWrapCheckbox.appendChild(elDivWrapCheckboxLabel)
   return elDivWrapCheckbox
+}
+
+function generateCheckboxItems(values) {
+  const elCheckboxes = document.createElement('div')
+  elCheckboxes.classList.add('checkboxes')
+  for (const value of values) {
+    const elWrapCheckbox = generateCheckboxItem(value)
+    elCheckboxes.appendChild(elWrapCheckbox)
+  }
+  return elCheckboxes
+}
+function generatePropsAttributeKey(keytext, values) {
+  const elDivWrapProps = document.createElement('div')
+  const elDivWrapPropsH3 = document.createElement('h3')
+  const generate = generateCheckboxItems(values)
+
+  elDivWrapProps.classList.add('wrap-props')
+
+  elDivWrapPropsH3.textContent = keytext
+  elDivWrapProps.appendChild(elDivWrapPropsH3)
+  elDivWrapProps.appendChild(generate)
+  return elDivWrapProps
+}
+
+function generatePropsAttributeKeys(filter) {
+  const elWpapFilter = document.createElement('div')
+  elWpapFilter.classList.add('wrap-filter')
+  for (const key in filter) {
+    const filterValue = filter[key]
+    const elFilter = generatePropsAttributeKey(key, filterValue)
+    elWpapFilter.appendChild(elFilter)
+  }
+  return elWpapFilter
+}
+
+function generateRangeFrom(product) {
+  const elRangeFrom = document.createElement('div')
+  const elLabel = document.createElement('label')
+  const elSpan = document.createElement('span')
+  const elInput = document.createElement('input')
+  elRangeFrom.classList.add('wrap-range')
+
+  elInput.setAttribute('type', 'range')
+  elInput.setAttribute('name', product.value)
+  elInput.setAttribute('id', product.value)
+  elInput.setAttribute('value', product.value)
+  elInput.setAttribute('min', product.value)
+  elInput.setAttribute('max', product.value)
+  elLabel.setAttribute('for', value)
+  elLabel.textContent = value
+
+  elRangeFrom.appendChild(elLabel)
+  elRangeFrom.appendChild(elInput)
+  elLabel.appendChild(elSpan)
+  return elRangeFrom
 }
 
 function generatePageButton(numberPage) {
@@ -114,3 +156,4 @@ function generatePageButton(numberPage) {
   paginationContainer.onclick = onClickButtonPage
   return paginationContainer
 }
+// product.attributes['Блок питания']
