@@ -36,7 +36,7 @@ function generateProduct(product) {
 
   for (const key in product.attributes) {
     const elLabel = document.createElement('label')
-    console.log(product.attributes[key])
+    // console.log(product.attributes[key])
     elLabel.textContent = product.attributes[key]
     elLabel.setAttribute('for', product.attributes[key])
     elDivLabel.appendChild(elLabel)

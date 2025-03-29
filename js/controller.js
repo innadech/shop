@@ -1,10 +1,13 @@
-function handleAddFavorites(id) {
+async function handleAddFavorites(id) {
+  const products = await getProductsAPI()
   console.log(products)
+  setPaginatedProductsStorage(products)
   modelUserSelections.markAsFavoriteById(products, +id)
   modelUserSelections.getFavorites(products)
   const favoritesCount = modelUserSelections.getFavoritesCount(products)
   renderSpanFavorite(favoritesCount)
 }
+
 function handleAddCarts(id) {
   modelUserSelections.addToCartById(computeProducts(), +id)
   modelUserSelections.getCarts(computeProducts())

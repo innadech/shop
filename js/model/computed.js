@@ -1,11 +1,10 @@
-function convertedCurrencyProducts() {
+async function convertedCurrencyProducts() {
+  const products = await getProductsAPI()
+  console.log(products)
   return getConvertedCurrencyProducts(products)
 }
-
 function searchedProducts() {
-  const x = convertedCurrencyProducts()
-  console.log(x)
-  return getSearchedProducts(x, state.searchQuery)
+  return getSearchedProducts(convertedCurrencyProducts(), state.searchQuery)
 }
 
 function pricedProducts() {
@@ -37,13 +36,13 @@ function totalPages() {
 }
 
 function minPrice() {
-  const x = getMinPrice(products)
+  const x = getMinPrice(sortedProducts())
   if (state.priceFrom < x) state.priceFrom = x
   return x
 }
 
 function maxPrice() {
-  const x = getMaxPrice(products)
+  const x = getMaxPrice(sortedProducts())
   if (state.priceTo > x) state.priceTo = x
   return x
 }
