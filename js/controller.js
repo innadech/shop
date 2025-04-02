@@ -35,8 +35,8 @@ function handleFindProducts(query) {
 
 function handleSetProductsPerPage(pagesize) {
   state.pageSize = +pagesize
-  renderContainerProduct(paginatedProducts())
   renderPagination(totalPages())
+  renderContainerProduct(paginatedProducts())
 }
 
 function handleSetPage(currentPage) {
@@ -46,24 +46,31 @@ function handleSetPage(currentPage) {
 
 function handleSetRangePriceFrom(from) {
   state.priceFrom = +from
-  renderContainerProduct(paginatedProducts())
   renderPagination(totalPages())
+  renderContainerProduct(paginatedProducts())
   renderRangePrice(minPrice(), maxPrice(), state.priceFrom, state.priceTo)
 }
 function handleSetRangePriceTo(to) {
   state.priceTo = +to
-  renderContainerProduct(paginatedProducts())
   renderPagination(totalPages())
+  renderContainerProduct(paginatedProducts())
   renderRangePrice(minPrice(), maxPrice(), state.priceFrom, state.priceTo)
 }
 function handleFindProductsByAttributeValue(attributes) {
   console.log(paginatedProducts())
-  const finded = findProductsByAttributeValue(paginatedProducts(), attributes)
+  renderPagination(totalPages())
+  const finded = findProductsByAttributeValue(sortedProducts(), attributes)
   console.log(finded)
   renderContainerProduct(finded)
-  renderPagination(totalPages())
+  addAtributesToFilter(finded)
+  renderFilter(filter)
 }
 
-renderContainerProduct(paginatedProducts())
-renderPagination(totalPages())
-renderRangePrice(minPrice(), maxPrice(), state.priceFrom, state.priceTo)
+async function handleLoadPage() {
+  products = await getProductsAPI()
+  setProductsStorage(products)
+  renderPagination(totalPages())
+  renderContainerProduct(paginatedProducts())
+  renderRangePrice(minPrice(), maxPrice(), state.priceFrom, state.priceTo)
+}
+handleLoadPage()

@@ -1,6 +1,4 @@
-async function convertedCurrencyProducts() {
-  const products = await getProductsAPI()
-  console.log(products)
+function convertedCurrencyProducts() {
   return getConvertedCurrencyProducts(products)
 }
 function searchedProducts() {

@@ -3,6 +3,5 @@ async function getProductsAPI() {
   const resp = await fetch(url)
   const json = await resp.json()
   const jsonPayload = await json.payload
-  console.log(jsonPayload)
   return jsonPayload
 }

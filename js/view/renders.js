@@ -52,6 +52,7 @@ function renderInputRangePriceToValue(val) {
 }
 
 function renderContainerProduct(products) {
+  console.log(state.currentPage)
   const elDivContainer = document.querySelector('.container-products')
   elDivContainer.innerHTML = ''
   for (const product of products) {
