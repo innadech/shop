@@ -62,10 +62,10 @@ function renderContainerProduct(products) {
 }
 
 function renderFilter(filter) {
-  const elFilter = document.querySelector('.filter-checkbox')
+  const elFilterContainer = document.querySelector('.filter-container')
   const elDivAttributeKeys = generatePropsAttributeKeys(filter)
-  elFilter.innerHTML = ''
-  elFilter.appendChild(elDivAttributeKeys)
+  elFilterContainer.innerHTML = ''
+  elFilterContainer.appendChild(elDivAttributeKeys)
 }
 
 function renderPagination(totalPages) {

@@ -57,12 +57,11 @@ function handleSetRangePriceTo(to) {
   renderRangePrice(minPrice(), maxPrice(), state.priceFrom, state.priceTo)
 }
 function handleFindProductsByAttributeValue(attributes) {
-  console.log(paginatedProducts())
-  renderPagination(totalPages())
   const finded = findProductsByAttributeValue(sortedProducts(), attributes)
-  console.log(finded)
-  renderContainerProduct(finded)
   addAtributesToFilter(finded)
+
+  renderPagination(totalPages())
+  renderContainerProduct(paginatedProducts())
   renderFilter(filter)
 }
 

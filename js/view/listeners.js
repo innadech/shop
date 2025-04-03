@@ -45,10 +45,10 @@ function onClickButtonPage(e) {
   handleSetPage(e.target.innerHTML)
 }
 
-function onClickFilterCheckbox() {
+function onClickButtonFilter() {
   const elCheckbox = document.querySelector('input[type="checkbox"]:checked')
   console.log(elCheckbox.value.replace(/\s+/g, ''))
   console.log(typeof elCheckbox.value)
 
-  handleFindProductsByAttributeValue(elCheckbox.value.replace(/\s+/g, ''))
+  handleFindProductsByAttributeValue(elCheckbox.value)
 }

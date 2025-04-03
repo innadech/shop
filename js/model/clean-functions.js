@@ -209,7 +209,9 @@ function addAtributesToFilter(products) {
       if (filter[attributeKey]) {
         // filter[attributeKey]
         console.log(product.attributes[attributeKey])
-        filter[attributeKey].push(product.attributes[attributeKey])
+        if (!filter[attributeKey].includes(product.attributes[attributeKey])) {
+          filter[attributeKey].push(product.attributes[attributeKey])
+        }
       }
     }
   }
