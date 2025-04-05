@@ -4,9 +4,18 @@ function convertedCurrencyProducts() {
 function searchedProducts() {
   return getSearchedProducts(convertedCurrencyProducts(), state.searchQuery)
 }
-
+function foundAttributedProducts() {
+  return getfindProductsByAttributeValue(
+    searchedProducts(),
+    state.checkedAttributes
+  )
+}
 function pricedProducts() {
-  return getPricedProducts(searchedProducts(), state.priceFrom, state.priceTo)
+  return getPricedProducts(
+    foundAttributedProducts(),
+    state.priceFrom,
+    state.priceTo
+  )
 }
 
 function sortedProducts() {

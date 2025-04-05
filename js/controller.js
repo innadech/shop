@@ -56,13 +56,11 @@ function handleSetRangePriceTo(to) {
   renderContainerProduct(paginatedProducts())
   renderRangePrice(minPrice(), maxPrice(), state.priceFrom, state.priceTo)
 }
-function handleFindProductsByAttributeValue(attributes) {
-  const finded = findProductsByAttributeValue(sortedProducts(), attributes)
-  addAtributesToFilter(finded)
 
+function handleFindProductsByAttributeValue(attribute) {
+  state.checkedAttributes = attribute
   renderPagination(totalPages())
   renderContainerProduct(paginatedProducts())
-  renderFilter(filter)
 }
 
 async function handleLoadPage() {
@@ -70,6 +68,8 @@ async function handleLoadPage() {
   setProductsStorage(products)
   renderPagination(totalPages())
   renderContainerProduct(paginatedProducts())
+  updateFilter()
+  renderFilter(filter)
   renderRangePrice(minPrice(), maxPrice(), state.priceFrom, state.priceTo)
 }
 handleLoadPage()
