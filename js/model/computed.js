@@ -43,13 +43,13 @@ function totalPages() {
 }
 
 function minPrice() {
-  const x = getMinPrice(sortedProducts())
+  const x = getMinPrice(convertedCurrencyProducts())
   if (state.priceFrom < x) state.priceFrom = x
   return x
 }
 
 function maxPrice() {
-  const x = getMaxPrice(sortedProducts())
+  const x = getMaxPrice(convertedCurrencyProducts())
   if (state.priceTo > x) state.priceTo = x
   return x
 }

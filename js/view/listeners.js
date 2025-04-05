@@ -47,5 +47,16 @@ function onClickButtonPage(e) {
 
 function onClickButtonFilter() {
   const elCheckbox = document.querySelector('input[type="checkbox"]:checked')
-  handleFindProductsByAttributeValue(elCheckbox.value)
+
+  // console.log(document.querySelectorAll('input[type="checkbox"]:checked'))
+
+  document.querySelectorAll('input[type="checkbox"]:checked').forEach(el => {
+    console.log(el.value)
+  })
+
+  if (elCheckbox) {
+    handleFindProductsByAttributeValue(elCheckbox.value)
+  } else {
+    handleFindProductsByAttributeValue('')
+  }
 }
